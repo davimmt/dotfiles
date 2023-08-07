@@ -1,9 +1,6 @@
 local plugins = {
-	{ "hashivim/vim-terraform", ft = { "tf", "terraform" } },
 	{ "tpope/vim-fugitive", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
-	{ "neoclide/coc.nvim", branch = "release", ft = {"tf", "terraform"} },
-	{ "juliosueiras/vim-terraform-completion", ft = {"tf", "terraform"} },
 	{ "kdheepak/lazygit.nvim", event = "VeryLazy", dependencies = {"nvim-lua/plenary.nvim"} },
   {
     "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = true, -- event = "VeryLazy",
