@@ -1,6 +1,4 @@
 alias v=nvim
-alias cpf=copyfile
-
 alias vf='v $(fzf)'
 alias cf='cat $(fzf)'
 alias bf='bat $(fzf)'
@@ -45,6 +43,7 @@ alias adev='export AWS_PROFILE=dev && aus && ssoenv'
 alias id='aws sts get-caller-identity'
 alias ssm='aws ssm start-session --target '
 adi() { aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" "Name=tag:Name,Values=*$1*" --query "Reservations[*].Instances[*].{id: InstanceId, name: Tags[?Key=='Name'] | [0].Value, env: Tags[?Key=='Environment'] | [0].Value, ip: PrivateIpAddress, squad: Tags[?Key=='Squad'] | [0].Value}" --output table }
+aem() { aws sts decode-authorization-message --encoded-message "$1" }
 
 # Kubectl
 alias k=kubectl
@@ -87,7 +86,7 @@ alias kdelj='kubectl delete job '
 alias kaf='kubectl apply -f '
 alias kdf='kubectl delete -f '
 
-alias kgaa='kubectl get all,ing,clusterrole,clusterrolebinding,secret,configmap -A'
+alias kgaa='kubectl get all,ing,clusterrole,clusterrolebinding,secret,configmap,crd -A'
 alias kgap='kubectl get po -A'
 
 alias kcu='aws eks update-kubeconfig --name '
@@ -109,3 +108,13 @@ alias tfs='terraform state '
 # Ansible
 alias ai='ansible-inventory '
 alias ap='ansible-playbook '
+
+# wsl-vpnkit
+export VMEXEC_PATH=/etc/wsl-vpn-kit/wsl-vm 
+export GVPROXY_PATH=/etc/wsl-vpn-kit/wsl-gvproxy.exe
+
+# PSWD
+export PSWD_PATH_PRIK='~/.local/vault/pswd.pem'
+export PSWD_PATH_PUBK='~/.local/vault/pswd.pub'
+export PSWD_PATH_FILE='~/.local/vault/pswd.pswd'
+alias pswd='python3 ~/.local/pswd/main.py '
