@@ -28,6 +28,7 @@ local config = {
         { desc = '󰊳 Lazy', group = '@property', action = 'Lazy', key = 'L' },
         { desc = ' Session', group = 'Label', action = 'SessionManager load_last_session', key = 's' },
         { desc = ' Files', group = 'Label', action = 'Telescope find_files',  key = 'f', },
+        { desc = '₩ Word', group = 'Label', action = 'Telescope live_grep',  key = 'w', },
       },
       project = { enable = true, limit = 3, },
       mru = { limit = 5, },

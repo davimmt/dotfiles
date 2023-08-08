@@ -1,5 +1,5 @@
 local plugins = {
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	-- { "tpope/vim-fugitive", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "kdheepak/lazygit.nvim", event = "VeryLazy", dependencies = {"nvim-lua/plenary.nvim"} },
   {
@@ -21,7 +21,7 @@ local plugins = {
     end,
   },
   {
-  "jose-elias-alvarez/null-ls.nvim", ft = {"tf", "terraform"}, -- event = "VeryLazy",
+    "jose-elias-alvarez/null-ls.nvim", ft = {"tf", "terraform"}, -- event = "VeryLazy",
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -34,12 +34,6 @@ local plugins = {
       })
     end,
   },
-	{
-		"akinsho/toggleterm.nvim", event = "VeryLazy",
-		opts = {
-			open_mapping = [[<C-t>]],
-		},
-	},
   {
     "folke/flash.nvim", -- event = "VeryLazy",
     keys = {
@@ -68,12 +62,24 @@ local plugins = {
   --     return require "custom.configs.alpha-nvim"
   --   end
   -- },
-  {
-    "NvChad/nvterm",
-    config = function ()
-      return require "custom.configs.nvterm"
-    end,
-  },
+  -- {
+  --   "NvChad/nvterm",
+  --   config = function ()
+  --     return require "custom.configs.nvterm"
+  --   end,
+  -- },
+  -- { 
+  --   "lukas-reineke/indent-blankline.nvim", event = "VeryLazy",
+  --   config = function()
+  --     return require "custom.configs.indent-blankline"
+  --   end,
+  -- },
+  -- { 
+  --   "lewis6991/gitsigns.nvim", event = "VeryLazy", -- https://github.com/lewis6991/gitsigns.nvim/tree/main
+  --   config = function()
+  --     return require "custom.configs.gitsigns"
+  --   end,
+  -- },
 }
 
 return plugins
