@@ -1,5 +1,24 @@
 local plugins = {
-	-- { "tpope/vim-fugitive", event = "VeryLazy" },
+  {
+    'glepnir/dashboard-nvim', cmd = 'Dashboard', event = 'VimEnter', dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      return require "custom.configs.dashboard-nvim"
+    end,
+  },
+  -- {
+  --   "goolord/alpha-nvim", event = "VimEnter", cmd = "Alpha",
+  --   config = function ()
+  --     return require "custom.configs.alpha-nvim"
+  --   end
+  -- },
+  {
+    'Shatur/neovim-session-manager', event = 'VimEnter',
+    config = function()
+      require('session_manager').setup({
+        autoload_mode = 'Disabled' -- What to do when started without arguments [Disabled, CurrentDir, LastSession].
+      })
+    end,
+  },
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "kdheepak/lazygit.nvim", event = "VeryLazy", dependencies = {"nvim-lua/plenary.nvim"} },
   {
@@ -27,15 +46,7 @@ local plugins = {
     end,
   },
   {
-    'Shatur/neovim-session-manager', event = 'VimEnter',
-    config = function()
-      require('session_manager').setup({
-        autoload_mode = 'Disabled' -- What to do when started without arguments [Disabled, CurrentDir, LastSession].
-      })
-    end,
-  },
-  {
-    "folke/flash.nvim", -- event = "VeryLazy",
+    "folke/flash.nvim",
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
       { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
@@ -51,35 +62,23 @@ local plugins = {
 		end,
 	},
   {
-    'glepnir/dashboard-nvim', event = 'VimEnter', dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      return require "custom.configs.dashboard-nvim"
+    "NvChad/nvterm",
+    opts = function ()
+      return require "custom.configs.nvterm"
     end,
   },
-  -- {
-  --   "goolord/alpha-nvim", event = "VimEnter", cmd = "Alpha",
-  --   config = function ()
-  --     return require "custom.configs.alpha-nvim"
-  --   end
-  -- },
-  -- {
-  --   "NvChad/nvterm",
-  --   config = function ()
-  --     return require "custom.configs.nvterm"
-  --   end,
-  -- },
-  -- { 
-  --   "lukas-reineke/indent-blankline.nvim", event = "VeryLazy",
-  --   config = function()
-  --     return require "custom.configs.indent-blankline"
-  --   end,
-  -- },
-  -- { 
-  --   "lewis6991/gitsigns.nvim", event = "VeryLazy", -- https://github.com/lewis6991/gitsigns.nvim/tree/main
-  --   config = function()
-  --     return require "custom.configs.gitsigns"
-  --   end,
-  -- },
+  { 
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      return require "custom.configs.indent-blankline"
+    end,
+  },
+  { 
+    "lewis6991/gitsigns.nvim",
+    opts = function()
+      return require "custom.configs.gitsigns"
+    end,
+  },
 }
 
 return plugins
