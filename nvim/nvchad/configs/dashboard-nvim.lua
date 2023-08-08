@@ -25,10 +25,14 @@ local config = {
         append = {""},
       },
       shortcut = {
-        { desc = '󰊳 Lazy', group = '@property', action = 'Lazy', key = 'L' },
+        -- https://fontawesome.com/search?o=r&m=free
+        -- :so $VIMRUNTIME/syntax/hitest.vim
+        { desc = ' Lazy', group = '@property', action = 'Lazy', key = 'L' },
         { desc = ' Session', group = 'Label', action = 'SessionManager load_last_session', key = 's' },
-        { desc = ' Files', group = 'Label', action = 'Telescope find_files',  key = 'f', },
-        { desc = '₩ Word', group = 'Label', action = 'Telescope live_grep',  key = 'w', },
+        { desc = ' File', group = 'Label', action = 'Telescope find_files',  key = 'f', },
+        { desc = ' Word', group = 'Label', action = 'Telescope live_grep',  key = 'w', },
+        { desc = ' Git', group = 'Label', action = 'Telescope git_status',  key = 'g', },
+        { desc = ' Quit', group = 'Number', action = 'q!',  key = 'q', },
       },
       project = { enable = true, limit = 3, },
       mru = { limit = 5, },
