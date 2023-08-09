@@ -54,6 +54,8 @@ local opts = {
     -- Actions
     map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage' })
     map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset' })
+    map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview' })
+    map('n', '<leader>hP', gs.preview_hunk_inline, { desc = 'Preview inline' })
     map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Stage' })
     map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Reset' })
     map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Unstage' })
