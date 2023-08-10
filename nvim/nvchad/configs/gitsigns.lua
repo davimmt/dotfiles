@@ -1,6 +1,7 @@
 local opts = {
   signs = {
     change = { numhl = 'DiffModified', hl = 'DiffModified' },
+    untracked = { linehl = '', numhl = '', hl = 'DevIconSh' },
   --   add          = { text = '│' },
   --   change       = { text = '│' },
   --   delete       = { text = '_' },

@@ -5,7 +5,15 @@ M.plugins = "custom.plugins"
 
 M.ui = {
   theme = 'nightowl',
-  theme_toggle = {'catppuccin', 'nightowl'}
+  theme_toggle = {'catppuccin', 'nightowl'},
+  hl_add = {
+    DashboardHeader = { fg = "#40ffff" },
+    DashboardProjectTitle = { fg = "#40ffff" },
+    DashboardProjectIcon = { fg = "#ffa0a0" },
+    DashboardMruTitle = { fg = "#40ffff" },
+    DashboardShotCutIcon = { fg = "#40ffff" },
+    DashboardFooter = { fg = "#40ffff" },
+  },
 }
 
 M.nvimtree = {
