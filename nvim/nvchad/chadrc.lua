@@ -13,6 +13,9 @@ M.ui = {
     DashboardMruTitle = { fg = "#40ffff" },
     DashboardShotCutIcon = { fg = "#40ffff" },
     DashboardFooter = { fg = "#40ffff" },
+
+    -- GitSignsAddLn = { bg = {"green", -45} },
+    -- GitSignsChangeLn = { bg = {"yellow", -65} },
   },
 }
 
