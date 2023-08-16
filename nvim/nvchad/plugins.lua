@@ -79,6 +79,12 @@ local plugins = {
       return require "custom.configs.gitsigns"
     end,
   },
+  {
+    "folke/which-key.nvim",
+    config = function()
+      return require "custom.configs.which-key"
+    end,
+  },
 }
 
 return plugins

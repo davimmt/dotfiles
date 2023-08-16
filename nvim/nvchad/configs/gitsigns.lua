@@ -52,19 +52,23 @@ local opts = {
       return '<Ignore>'
     end, {expr=true})
 
+    map('n', '<A-x>', function()
+      if vim.wo.diff then return '<A-c>' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
     -- Actions
-    map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage' })
-    map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset' })
-    map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview' })
-    map('n', '<leader>hP', gs.preview_hunk_inline, { desc = 'Preview inline' })
-    map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Stage' })
-    map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Reset' })
-    map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Unstage' })
-    map('n', '<leader>hb', function() gs.blame_line{full=true} end, { desc = 'Blame' })
-    map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Blame toggle' })
-    map('n', '<leader>hd', gs.diffthis, { desc = 'Diff line' })
-    map('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'Diff hunk' })
-    map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle deleted' })
+    map('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview' })
+    map('n', '<leader>gP', gs.preview_hunk_inline, { desc = 'Preview inline' })
+    map('v', '<leader>gs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Stage' })
+    map('v', '<leader>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Reset' })
+    map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Unstage' })
+    map('n', '<leader>gb', function() gs.blame_line{full=true} end, { desc = 'Blame' })
+    map('n', '<leader>gB', gs.toggle_current_line_blame, { desc = 'Blame toggle' })
+    map('n', '<leader>gd', gs.diffthis, { desc = 'Diff line' })
+    map('n', '<leader>gD', function() gs.diffthis('~') end, { desc = 'Diff hunk' })
+    map('n', '<leader>gt', gs.toggle_deleted, { desc = 'Toggle deleted' })
 
     -- Text object
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
