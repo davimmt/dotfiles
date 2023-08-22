@@ -4,8 +4,9 @@ M.mappings = require "custom.mappings"
 M.plugins = "custom.plugins"
 
 M.ui = {
-  theme = 'nightowl',
-  theme_toggle = {'catppuccin', 'nightowl'},
+  theme = 'ayu_dark',
+  theme_toggle = {'catppuccin', 'ayu_dark'},
+  telescope = { style = "bordered" },
   hl_add = {
     DashboardHeader = { fg = "#40ffff" },
     DashboardProjectTitle = { fg = "#40ffff" },

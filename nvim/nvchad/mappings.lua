@@ -12,6 +12,8 @@ M.disabled = {
     ["<leader>/"] = "",
     -- nvchad themes
     ["<leader>th"] = "",
+    -- nvchad cheatsheet
+    ["<leader>ch"] = "",
     -- telescope bookmarks
     ["<leader>ma"] = "",
     -- pick a hidden term
@@ -25,6 +27,9 @@ M.disabled = {
     ["<leader>cm"] = "",
     ["<leader>gt"] = "",
     ["<leader>fm"] = "",
+    -- which-key
+    ["<leader>wk"] = "",
+    ["<leader>wK"] = "",
   }
 }
 
