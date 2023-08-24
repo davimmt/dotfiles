@@ -55,5 +55,12 @@ eval "$(navi widget zsh)"
 # Remove less-like outputs
 export PAGER=""
 
+# Git config
+export GIT_PAGER="diff-so-fancy"
+
+# Set default editor as nvim
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 # kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
