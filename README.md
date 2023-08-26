@@ -32,3 +32,9 @@ ln -s "$(pwd)"/nvim/lunarvim/config.lua  ~/.config/lvim/config.lua
 ```shell
 ln -s "$(pwd)"/nvim/kickstart-nvim/custom.lua ~/.config/nvim/lua/custom/plugins/custom.lua
 ```
+
+## bw
+```shell
+mkdir ~/.bw
+ln -s "$(pwd)"/bw/login.sh ~/.bw/login.sh
+```

@@ -118,3 +118,13 @@ export PSWD_PATH_PRIK='~/.local/vault/pswd.pem'
 export PSWD_PATH_PUBK='~/.local/vault/pswd.pub'
 export PSWD_PATH_FILE='~/.local/vault/pswd.pswd'
 alias pswd='python3 ~/.local/pswd/main.py '
+
+# Bitwarden
+export BW_CLIENTID_FILE=~/.bw/.ci
+export BW_CLIENTSECRET_FILE=~/.bw/.cs
+export BW_MASTERPASSWORD_FILE=~/.bw/.mp
+export BW_SESSION_FILE=~/.bw/.session
+alias bwl='~/.bw/login.sh'
+alias bw='bw --session $(cat $BW_SESSION_FILE) '
+alias bws='bw sync'
+bwc(){ bw get password $@ | clip.exe }
