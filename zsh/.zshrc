@@ -12,6 +12,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# add ~/.local/bin to PATH
+export PATH=~/.local/bin:$PATH
+
 # Source Antigen
 source ~/.antigen/antigen.zsh
 # Configuring autocomplete
@@ -43,9 +46,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 bindkey '^H' backward-kill-word
 bindkey -M emacs '^[[3;5~' kill-word
 
-# Set up aliases
-source ~/.zprofile
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -63,4 +63,22 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # kubectl autocomplete
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+autoload -Uz compinit && compinit && source <(kubectl completion zsh)
+
+# bw autocomplete
+# eval "$(bw completion --shell zsh); compdef _bw bw;" # does not work because 'bw' alias
+
+# source fuzzy find
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# terraform autocomplete
+complete -o nospace -C /usr/bin/terraform terraform
+
+# Enble navi shortcut
+eval "$(navi widget zsh)"
+
+# Set up aliases
+source ~/.zprofile
+
+# Custom sources
+for file in ~/.z.*; do source "$file"; done
