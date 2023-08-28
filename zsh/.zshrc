@@ -12,6 +12,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Uncomment the following line if pasting URLs and other text is messed up.
+DISABLE_MAGIC_FUNCTIONS="true"
+
 # add ~/.local/bin to PATH
 export PATH=~/.local/bin:$PATH
 
@@ -26,7 +29,6 @@ setopt promptsubst
 antigen use oh-my-zsh
 # Set up plugins
 antigen bundle git
-antigen bundle copyfile
 antigen bundle dirhistory
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions

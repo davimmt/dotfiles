@@ -1,4 +1,5 @@
 alias v=nvim
+alias clip='clip.exe'
 alias vf='v $(fzf)'
 alias cf='cat $(fzf)'
 alias bf='bat $(fzf)'
