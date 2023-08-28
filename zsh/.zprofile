@@ -120,11 +120,36 @@ export PSWD_PATH_FILE='~/.local/vault/pswd.pswd'
 alias pswd='python3 ~/.local/pswd/main.py '
 
 # Bitwarden
-export BW_CLIENTID_FILE=~/.bw/.ci
-export BW_CLIENTSECRET_FILE=~/.bw/.cs
 export BW_MASTERPASSWORD_FILE=~/.bw/.mp
 export BW_SESSION_FILE=~/.bw/.session
-alias bwl='~/.bw/login.sh'
-alias bw='bw --session $(cat $BW_SESSION_FILE) '
+alias bwl='~/.bw/login.sh '
 alias bws='bw sync'
-bwc(){ bw get password $@ | clip.exe }
+alias bwgen='bw generate -ulns --length 16'
+
+for bin in /usr/bin ~/.local/bin; do
+  [ -f $bin/bw ] && bw=$bin/bw && continue
+done
+bw() {
+  $bw $@ --session $(cat $BW_SESSION_FILE)
+}
+
+bwg() {
+  bw get password $@ | clip.exe
+}
+
+bwcf() {
+  echo -n '{"name":"'$1'"}' | base64 | bw create folder
+}
+
+bwci() {
+  [ $# -lt 3 ] && echo 'Please supply at least 3 of 4 args.' || (\
+    name=$1
+    login=$2
+    uris=$3
+    folder=${4:-null}
+    [ $folder != null ] && folder=$(bw get folder $folder 2> .bwci.tmp | jq .id)
+    [ -f .bwci.tmp ] && grep 'More than one result was found.' .bwci.tmp || \
+    echo -n '{"folderId":'$folder',"type":1,"name":"'$name'","notes":null,"login":{"uris":'$uris',"username":"'$2'","password":"'$(bwgen)'","totp":null}}' | \
+      base64 | bw create item > /dev/null
+    rm -f .bwci.tmp)
+}
