@@ -153,3 +153,8 @@ bwci() {
       base64 | bw create item > /dev/null
     rm -f .bwci.tmp)
 }
+
+bwui() {
+  iid=$(bw get item $1 | jq -r .id)
+  bw get item $1 | jq '.login.password="'$(bwgen)'"' | bw encode | bw edit item $iid > /dev/null
+}
