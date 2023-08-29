@@ -1,16 +1,8 @@
 local config = {
   require("nvim-treesitter.configs").setup({
-    "bash",
-    "dockerfile",
-    "hcl",
-    "json",
-    "regex",
-    "terraform",
-    "yaml",
     ensure_installed = {
       "bash",
       "dockerfile",
-      "hcl",
       "json",
       "regex",
       "terraform",

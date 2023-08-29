@@ -1,6 +1,14 @@
-require'lspconfig'.tflint.setup{}
-require'lspconfig'.terraform_lsp.setup{}
--- require'lspconfig'.terraformls.setup{}
+require'lspconfig'.terraformls.setup {
+  root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
+}
+
+require'lspconfig'.terraform_lsp.setup {
+  root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
+}
+
+require'lspconfig'.tflint.setup {
+  root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
+}
 
 local config = {
   vim.api.nvim_create_autocmd({"BufWritePre"}, {
