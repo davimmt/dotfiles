@@ -1,4 +1,5 @@
 alias v=nvim
+alias vs='v -c "SessionManager load_last_session"'
 alias clip='clip.exe'
 alias vf='v $(fzf)'
 alias cf='cat $(fzf)'

@@ -12,7 +12,7 @@ local plugins = {
   --   end
   -- },
   {
-    'Shatur/neovim-session-manager', event = 'VimEnter',
+    'Shatur/neovim-session-manager', lazy = false, -- event = 'VimEnter',
     config = function()
       require('session_manager').setup({
         autoload_mode = 'Disabled' -- What to do when started without arguments [Disabled, CurrentDir, LastSession].
