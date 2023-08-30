@@ -1,6 +1,6 @@
-require'lspconfig'.terraformls.setup {
-  root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
-}
+-- require'lspconfig'.terraformls.setup {
+--   root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
+-- }
 
 require'lspconfig'.terraform_lsp.setup {
   root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
