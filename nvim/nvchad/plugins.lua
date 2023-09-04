@@ -58,12 +58,13 @@ local plugins = {
 			vim.g.VM_maps = {
 				["Find Under"] = "<C-d>",
 				["Find Subword Under"] = "<C-d>",
+				["Visual All"] = "<C-a>",
 			}
 		end,
 	},
   {
     "NvChad/nvterm",
-    opts = function ()
+    opts = function()
       return require "custom.configs.nvterm"
     end,
   },
