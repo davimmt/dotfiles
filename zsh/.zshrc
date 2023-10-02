@@ -79,6 +79,11 @@ complete -o nospace -C /usr/bin/terraform terraform
 # Enble navi shortcut
 eval "$(navi widget zsh)"
 
+GOROOT=/usr/local/go
+GOPATH=$GOROOT/bin
+export GOROOT=$GOROOT
+export PATH=$GOPATH:$PATH
+
 # Set up aliases
 source ~/.zprofile
 
