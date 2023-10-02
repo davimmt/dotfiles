@@ -34,6 +34,7 @@ alias gr='git restore '
 alias gca='git add .; git commit -a -m '
 alias gpull='git pull --no-ff origin "$(git rev-parse --abbrev-ref HEAD)" --no-edit'
 alias gbc='git add .; git commit -a -m "$(git rev-parse --abbrev-ref HEAD)"; git push origin "$(git rev-parse --abbrev-ref HEAD)"'
+alias gfp='git push -fu origin "$(git rev-parse --abbrev-ref HEAD)"'
 unalias gcp 2> /dev/null || true # git cherry-pick
 gcp() { gca "$@"; gp }
 
@@ -96,6 +97,13 @@ alias kcu='aws eks update-kubeconfig --name '
 alias kcn='kubectl config set-context --current --namespace '
 alias kcc='kubectl config use-context '
 kpip() { kubectl get pod -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.status.podIP}{"\n"}{end}' "$@" | column -t }
+
+# Docker
+alias dps='docker ps -a'
+alias dps='docker ps -a'
+alias dis='docker image ls'
+alias dcc='docker rm $(docker ps --filter status=exited -q)'
+alias dci='docker rmi $(docker images -f "dangling=true" -q)'
 
 # Terraform
 alias tf='terraform '
