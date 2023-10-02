@@ -7,6 +7,7 @@ local config = {
       "regex",
       "terraform",
       "yaml",
+      "go",
     },
     highlight = { enable = true },
     rainbow = {

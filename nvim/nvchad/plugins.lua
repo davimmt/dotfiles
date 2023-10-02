@@ -28,19 +28,20 @@ local plugins = {
     end,
   },
   {
-    "williamboman/mason.nvim", ft = {"tf", "terraform"}, build = ":MasonInstallAll",
+    "williamboman/mason.nvim", event = "VeryLazy", build = ":MasonInstallAll",
     opts = function()
       return require "custom.configs.mason"
     end,
   },
   {
-    "neovim/nvim-lspconfig", ft = {"tf", "terraform"}, -- event = "VeryLazy",
+    "neovim/nvim-lspconfig", event = "VeryLazy",
     config = function()
-      return require "custom.configs.nvim-lspconfig"
+      require "plugins.configs.lspconfig"
+      require "custom.configs.nvim-lspconfig"
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim", ft = {"tf", "terraform"}, -- event = "VeryLazy",
+    "jose-elias-alvarez/null-ls.nvim", event = "VeryLazy",
     opts = function()
       return require "custom.configs.null-ls"
     end,
