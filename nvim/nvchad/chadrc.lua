@@ -18,29 +18,16 @@ M.ui = {
     -- GitSignsAddLn = { bg = {"green", -45} },
     -- GitSignsChangeLn = { bg = {"yellow", -65} },
   },
+  hl_override = {
+    NvimTreeGitNew = { fg = "green" },
+    NvimTreeGitDirty = { fg = "orange" },
+  },
   statusline = {
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
 
     -- default/round/block/arrow (separators work only for "default" statusline theme;
     -- round and block will work for the minimal theme only)
     separator_style = "default",
-  },
-}
-
-M.nvimtree = {
-  git = {
-    enable = true,
-  },
-  renderer = {
-    highlight_git = true,
-    icons = {
-      show = {
-        git = true,
-      },
-    },
-  },
-  view = {
-    side = "right",
   },
 }
 
