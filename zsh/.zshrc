@@ -29,7 +29,7 @@ setopt promptsubst
 antigen use oh-my-zsh
 # Set up plugins
 antigen bundle git
-antigen bundle web-search
+antigen bundle web-search; alias s='google'
 antigen bundle sudo
 antigen bundle dirhistory
 antigen bundle zsh-users/zsh-autosuggestions
@@ -78,7 +78,7 @@ export EDITOR="$VISUAL"
 # terraform autocomplete
 complete -o nospace -C /usr/bin/terraform terraform
 
-GOROOT=/usr/local/go
+GOROOT=$HOME/.local/go
 GOPATH=$GOROOT/bin
 export GOROOT=$GOROOT
 export PATH=$GOPATH:$PATH
