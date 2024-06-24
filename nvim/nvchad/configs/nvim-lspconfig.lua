@@ -26,11 +26,63 @@ lspconfig.gopls.setup {
 -- }
 
 lspconfig.terraform_lsp.setup {
-  root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
+  root_dir = require("lspconfig.util").root_pattern("*.tf*", "*.tfvars", ".terraform")
 }
 
 lspconfig.tflint.setup {
-  root_dir = require("lspconfig.util").root_pattern("*.tf*", ".terraform", ".git", ".tflint.hcl")
+  root_dir = require("lspconfig.util").root_pattern("*.tf*", "*.tfvars", ".terraform", ".tflint.hcl")
+}
+
+-- Python
+lspconfig.pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
+lspconfig.pyright.setup { -- requires node > 10
+  settings = {
+    pyright = {
+      autoImportCompletion = true,
+    },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = 'off',
+      }
+    }
+  }
+}
+
+-- JS
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+  }
+  vim.lsp.buf.execute_command(params)
+end
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    }
+  },
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports",
+    }
+  }
 }
 
 local config = {

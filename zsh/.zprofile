@@ -169,3 +169,5 @@ bwui() {
   iid=$(bw get item $1 | jq -r .id)
   bw get item $1 | jq '.login.password="'$(bwgen)'"' | bw encode | bw edit item $iid > /dev/null
 }
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
