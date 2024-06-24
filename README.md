@@ -8,7 +8,7 @@ Also, I recommend using [this font](https://github.com/ryanoasis/nerd-fonts/rele
 
 First, clone this repository and its submodules:
 ```bash
-git clone --recurse-submodules https://github.com/davimmt/.dotfiles ${HOME}/.dotfiles
+git clone --recurse-submodules https://github.com/davimmt/dotfiles ${HOME}/.dotfiles
 ```
 
 Second, [install Nix](https://nix.dev/manual/nix/2.22/installation/installing-binary), if not already:
