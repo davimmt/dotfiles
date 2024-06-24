@@ -28,10 +28,15 @@ bindkey -M emacs '^[[3;5~' kill-word
 ###############################################################################
 # Plugins and themes
 ###############################################################################
-source $(find $NIX_STORE -maxdepth 4 -mindepth 4 -type f -name antigen.zsh -print -quit)
+if [[ -f ~/.antigen/antigen.zsh ]]; then
+  source ~/.antigen/antigen.zsh
+else
+  source $(find $NIX_STORE -maxdepth 4 -mindepth 4 -type f -name antigen.zsh -print -quit)
+fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
 autoload predict-on
 autoload -U colors && colors
+autoload -Uz compinit && compinit
 setopt promptsubst
 antigen use oh-my-zsh
 antigen bundle git
@@ -41,7 +46,8 @@ antigen bundle dirhistory
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+antigen bundle zdharma-continuum/history-search-multi-word
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh && ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 antigen theme romkatv/powerlevel10k
 #eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
