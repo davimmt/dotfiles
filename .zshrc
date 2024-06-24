@@ -14,6 +14,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 ###############################################################################
 # Configuration
 ###############################################################################
+export PATH=~/.local/bin:$PATH
 export PAGER=""
 export VISUAL=nvim
 export EDITOR="$VISUAL"
