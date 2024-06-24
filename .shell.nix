@@ -10,6 +10,7 @@ pkgs.mkShell {
     ripgrep
     fzf
     stow
+    zoxide
     # shell
     zsh
     oh-my-zsh

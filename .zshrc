@@ -53,6 +53,7 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 antigen theme romkatv/powerlevel10k
 #eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
 antigen apply
+eval "$(zoxide init zsh)" && alias cd='z '
 
 ###############################################################################
 # Autocomplete
