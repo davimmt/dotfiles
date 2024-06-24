@@ -54,6 +54,7 @@ alias aid='aws sts get-caller-identity'
 alias ssm='aws ssm start-session --target'
 adi() { aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" "Name=tag:Name,Values=*$1*" --query "Reservations[*].Instances[*].{id: InstanceId, name: Tags[?Key=='Name'] | [0].Value, env: Tags[?Key=='Environment'] | [0].Value, ip: PrivateIpAddress, squad: Tags[?Key=='Squad'] | [0].Value}" --output table }
 adm() { aws sts decode-authorization-message --encoded-message "$1" }
+alias al='aws sso login --sso-session '
 #####
 # AWS
 #####
