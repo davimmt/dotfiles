@@ -18,6 +18,10 @@ M.ui = {
     -- GitSignsAddLn = { bg = {"green", -45} },
     -- GitSignsChangeLn = { bg = {"yellow", -65} },
   },
+  hl_override = {
+    NvimTreeGitNew = { fg = "green" },
+    NvimTreeGitDirty = { fg = "orange" },
+  },
   statusline = {
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
 

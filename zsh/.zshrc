@@ -29,6 +29,8 @@ setopt promptsubst
 antigen use oh-my-zsh
 # Set up plugins
 antigen bundle git
+antigen bundle web-search; alias s='google'
+antigen bundle sudo
 antigen bundle dirhistory
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -52,7 +54,7 @@ bindkey -M emacs '^[[3;5~' kill-word
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Enable navi shortcut
-eval "$(navi widget zsh)"
+( eval "$(navi widget zsh)" ) 2> /dev/null
 
 # Remove less-like outputs
 export PAGER=""
@@ -65,7 +67,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # kubectl autocomplete
-autoload -Uz compinit && compinit && source <(kubectl completion zsh)
+( autoload -Uz compinit && compinit && source <(kubectl completion zsh) ) 2> /dev/null
 
 # bw autocomplete
 # eval "$(bw completion --shell zsh); compdef _bw bw;" # does not work because 'bw' alias
@@ -76,10 +78,7 @@ autoload -Uz compinit && compinit && source <(kubectl completion zsh)
 # terraform autocomplete
 complete -o nospace -C /usr/bin/terraform terraform
 
-# Enble navi shortcut
-eval "$(navi widget zsh)"
-
-GOROOT=/usr/local/go
+GOROOT=$HOME/.local/go
 GOPATH=$GOROOT/bin
 export GOROOT=$GOROOT
 export PATH=$GOPATH:$PATH
