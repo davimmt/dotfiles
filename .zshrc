@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ${HOME}/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -14,7 +14,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 ###############################################################################
 # Configuration
 ###############################################################################
-export PATH=~/.local/bin:$PATH
+export PATH=${HOME}/.local/bin:$PATH
 export PAGER=""
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -39,8 +39,8 @@ bindkey -M emacs '^[[3;5~' kill-word
 ###############################################################################
 # Plugins and themes
 ###############################################################################
-if [[ -f ~/.antigen/antigen.zsh ]]; then
-  source ~/.antigen/antigen.zsh
+if [[ -f ${HOME}/.antigen/antigen.zsh ]]; then
+  source ${HOME}/.antigen/antigen.zsh
 else
   source ${NIX_ANTIGEN}/share/antigen/antigen.zsh
 fi
@@ -59,14 +59,18 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 #antigen bundle zsh-users/zsh-history-substring-search
 #antigen bundle zdharma-continuum/history-search-multi-word
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh && ZSH_THEME="powerlevel10k/powerlevel10k"
+[[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh && ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 antigen theme romkatv/powerlevel10k
 #eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
 antigen apply
 eval "$(zoxide init zsh)" && alias cd='z '
-source ${NIX_FZF}/share/fzf/completion.zsh
-source ${NIX_FZF}/share/fzf/key-bindings.zsh
+if [[ -f ${HOME}/.fzf.zsh ]]; then
+  source ${HOME}/.fzf.zsh
+else
+  source ${NIX_FZF}/share/fzf/completion.zsh
+  source ${NIX_FZF}/share/fzf/key-bindings.zsh
+fi
 
 ###############################################################################
 # Autocomplete
@@ -77,5 +81,5 @@ complete -o nospace -C /usr/bin/terraform terraform
 ###############################################################################
 # Aliases
 ###############################################################################
-source ~/.zprofile
-setopt no_nomatch; for file in $(ls -A ~/.z.* 2> /dev/null); do source "$file"; done; setopt nomatch;
+source ${HOME}/.zprofile
+setopt no_nomatch; for file in $(ls -A ${HOME}/.z.* 2> /dev/null); do source "$file"; done; setopt nomatch;
