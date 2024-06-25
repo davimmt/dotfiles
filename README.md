@@ -27,5 +27,5 @@ nix-shell -p stow --run "stow -vv --ignore='^[^\.].*' ."
 
 You can now access the environment by:
 ```bash
-NIXPKGS_ALLOW_UNFREE=1 nix-shell ${HOME}/.shell.nix --command zsh
+nix-shell --run zsh ${HOME}/.shell.nix
 ```
