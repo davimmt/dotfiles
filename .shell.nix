@@ -1,8 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.mkShell {
-  packages = with pkgs; [ 
+  packages = with pkgs; [
     # utils
     neovim
+    nodejs # copilot
     git
     docker
     yq-go
@@ -10,6 +11,7 @@ pkgs.mkShell {
     ripgrep
     fzf
     stow
+    fzf-zsh
     zoxide
     # shell
     zsh
