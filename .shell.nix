@@ -10,8 +10,6 @@ pkgs.mkShell {
     jq
     ripgrep
     fzf
-    stow
-    fzf-zsh
     zoxide
     # shell
     zsh
@@ -28,4 +26,9 @@ pkgs.mkShell {
     tflint
     checkov
   ];
+
+
+shellHook = ''
+  export NIX_FZF=${pkgs.fzf} NIX_ANTIGEN=${pkgs.antigen}
+'';
 }

@@ -42,7 +42,7 @@ bindkey -M emacs '^[[3;5~' kill-word
 if [[ -f ~/.antigen/antigen.zsh ]]; then
   source ~/.antigen/antigen.zsh
 else
-  source $(find $NIX_STORE -maxdepth 4 -mindepth 4 -type f -name antigen.zsh -print -quit)
+  source ${NIX_ANTIGEN}/share/antigen/antigen.zsh
 fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
 autoload predict-on
@@ -65,6 +65,8 @@ antigen theme romkatv/powerlevel10k
 #eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
 antigen apply
 eval "$(zoxide init zsh)" && alias cd='z '
+source ${NIX_FZF}/share/fzf/completion.zsh
+source ${NIX_FZF}/share/fzf/key-bindings.zsh
 
 ###############################################################################
 # Autocomplete
