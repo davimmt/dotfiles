@@ -47,7 +47,8 @@ antigen bundle dirhistory
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zdharma-continuum/history-search-multi-word
+#antigen bundle zsh-users/zsh-history-substring-search
+#antigen bundle zdharma-continuum/history-search-multi-word
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh && ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 antigen theme romkatv/powerlevel10k
