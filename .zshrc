@@ -59,11 +59,11 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 #antigen bundle zsh-users/zsh-history-substring-search
 #antigen bundle zdharma-continuum/history-search-multi-word
-[[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh && ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-antigen theme romkatv/powerlevel10k
-#eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
+# [[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh && ZSH_THEME="powerlevel10k/powerlevel10k"
+# POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+# antigen theme romkatv/powerlevel10k
 antigen apply
+eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
 eval "$(zoxide init zsh)" && alias cd='z '
 if [[ -f ${HOME}/.fzf.zsh ]]; then
   source ${HOME}/.fzf.zsh
