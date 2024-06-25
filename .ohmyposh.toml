@@ -10,11 +10,21 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   newline = true
 
   [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'blue'
+    template = '{{ .Path }}'
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks.segments]]
     type = 'kubectl'
     style = 'plain'
     foreground = 'lightBlue'
     foreground_templates = ['{{if contains "prd" .Cluster}}red{{end}}']
-    template = '{{ replaceP ".*/(.*)" .Cluster "$1" }} ⎈ {{if .Namespace}}{{.Namespace}}{{else}}default{{end}}'
+    template = ' {{ replaceP ".*/(.*)" .Cluster "$1" }} ⎈ {{if .Namespace}}{{.Namespace}}{{else}}default{{end}}'
 
   [[blocks.segments]]
     type = 'aws'
@@ -24,17 +34,6 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
     [blocks.segments.properties]
       display_default = false
-
-
-  [[blocks.segments]]
-    type = 'path'
-    style = 'plain'
-    background = 'transparent'
-    foreground = 'blue'
-    template = ' {{ .Path }}'
-
-    [blocks.segments.properties]
-      style = 'full'
 
   [[blocks.segments]]
     type = 'git'
