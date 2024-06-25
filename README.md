@@ -19,7 +19,7 @@ eval $(tee -a ${HOME}/.bashrc <<< 'export PATH="${PATH}:${HOME}/.nix-profile/bin
 
 Finally:
 ```bash
-cd $HOME/.dotfiles
+cd ${HOME}/.dotfiles
 nix-shell -p stow --run "stow -vv --ignore='^[^\.].*' ."
 ```
 
