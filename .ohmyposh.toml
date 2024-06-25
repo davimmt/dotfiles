@@ -10,34 +10,41 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   newline = true
 
   [[blocks.segments]]
+    type = 'kubectl'
+    style = 'plain'
+    foreground = 'lightBlue'
+    foreground_templates = ['{{if contains "prd" .Cluster}}red{{end}}']
+    template = '{{ replaceP ".*/(.*)" .Cluster "$1" }} ⎈ {{if .Namespace}}{{.Namespace}}{{else}}default{{end}}'
+
+  [[blocks.segments]]
+    type = 'aws'
+    style = 'plain'
+    foreground = 'cyan'
+    template = ' {{.Profile}}{{if .Region}} ☁  {{.Region}}{{end}}'
+
+    [blocks.segments.properties]
+      display_default = false
+
+
+  [[blocks.segments]]
     type = 'path'
     style = 'plain'
     background = 'transparent'
     foreground = 'blue'
-    template = '{{ .Path }}'
+    template = ' {{ .Path }}'
 
     [blocks.segments.properties]
       style = 'full'
 
   [[blocks.segments]]
-  type = "kubectl"
-  style = "powerline"
-  powerline_symbol = ""
-  foreground = "#000000"
-  background = "#ebcc34"
-  template = " ﴱ {{.Cluster}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
-
-  [[blocks.segments]]
     type = 'git'
     style = 'plain'
-    foreground = 'p:grey'
-    background = 'transparent'
-    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    foreground = 'magenta'
+    template = ' {{ .HEAD }}{{if .Ahead }} ⇡{{ .Ahead }}{{ end }}{{if .Behind }} ⇣{{ .Behind }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}{{ if .Working.Changed }} <yellow>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <green>{{ .Staging.String }}</>{{ end }}'
 
     [blocks.segments.properties]
-      branch_icon = ''
-      commit_icon = '@'
       fetch_status = true
+      # branch_icon = ' '
 
 [[blocks]]
   type = 'rprompt'
@@ -63,7 +70,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground_templates = [
       "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}magenta{{end}}",
+      "{{if eq .Code 0}}lightMagenta{{end}}",
     ]
     background = 'transparent'
     template = '❯'
@@ -71,12 +78,12 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 [transient_prompt]
   foreground_templates = [
     "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}magenta{{end}}",
+    "{{if eq .Code 0}}lightMagenta{{end}}",
   ]
   background = 'transparent'
   template = '❯ '
 
 [secondary_prompt]
-  foreground = 'magenta'
+  foreground = 'lightMagenta'
   background = 'transparent'
   template = '❯❯ '
