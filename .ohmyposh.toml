@@ -50,11 +50,18 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   alignment = 'right'
 
   [[blocks.segments]]
+    type = 'status'
+    style = 'plain'
+    foreground = 'yellow'
+    background = 'transparent'
+    template = '{{ if ne .Code 0 }}<red>  {{ .Code }}</>{{ end }}'
+
+  [[blocks.segments]]
     type = 'executiontime'
     style = 'plain'
     foreground = 'yellow'
     background = 'transparent'
-    template = '{{ .FormattedMs }}'
+    template = ' {{ .FormattedMs }}'
 
     [blocks.segments.properties]
       threshold = 3000
