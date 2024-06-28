@@ -26,6 +26,7 @@ pkgs.mkShell {
     ##################################
     awscli2
     kubectl
+    pre-commit
     #terraform # NIXPKGS_ALLOW_UNFREE=1
     opentofu
     open-policy-agent
