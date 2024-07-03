@@ -47,7 +47,6 @@ fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
 autoload predict-on
 autoload -U colors && colors
-autoload -Uz compinit && compinit
 setopt promptsubst
 antigen use oh-my-zsh
 antigen bundle git
@@ -73,7 +72,7 @@ fi
 ###############################################################################
 # Autocomplete
 ###############################################################################
-( autoload -Uz compinit && compinit && source <(kubectl completion zsh) ) 2> /dev/null
+autoload -Uz compinit && compinit && source <(kubectl completion zsh)
 complete -o nospace -C /usr/bin/terraform terraform
 
 ###############################################################################
