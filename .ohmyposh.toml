@@ -14,7 +14,8 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     background = 'transparent'
     foreground = 'blue'
-    template = '{{ .Path }}'
+    template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ print $s.RepoName (trimPrefix $s.Dir .PWD) }}{{ else }}{{ path .Path .Location }}{{ end }}'
+    # template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ path (print $s.RepoName (trimPrefix $s.Dir .PWD)) .Location }}{{ else }}{{ path .Path .Location }}{{ end }}'
 
     [blocks.segments.properties]
       style = 'agnoster_short'
