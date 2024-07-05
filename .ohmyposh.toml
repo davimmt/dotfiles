@@ -56,14 +56,14 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground = 'yellow'
     background = 'transparent'
-    template = '{{ if ne .Code 0 }}<red>  {{ .Code }}</>{{ end }}'
+    template = '{{ if ne .Code 0 }}<red>  {{ .Code }}</>{{ end }} '
 
   [[blocks.segments]]
     type = 'executiontime'
     style = 'plain'
     foreground = 'yellow'
     background = 'transparent'
-    template = ' {{ .FormattedMs }}'
+    template = '{{ .FormattedMs }} '
 
     [blocks.segments.properties]
       threshold = 3000
@@ -73,6 +73,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground = 'cyan'
     background = 'transparent'
+    template = '{{ .CurrentDate | date .Format }}{{ if .Env.NVIM_LOG_FILE }}    {{ end }}'
 
 [[blocks]]
   type = 'prompt'
