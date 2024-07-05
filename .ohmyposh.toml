@@ -15,7 +15,7 @@ disable_cursor_positioning = true
     style = 'plain'
     background = 'transparent'
     foreground = 'blue'
-    template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ print $s.RepoName (trimPrefix $s.Dir .PWD) }}{{ else }}{{ path .Path .Location }}{{ end }}'
+    template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ print $s.RepoName (trimPrefix $s.Dir .PWD) }}{{ else }}{{ .Path }}{{ end }}'
     # template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ path (print $s.RepoName (trimPrefix $s.Dir .PWD)) .Location }}{{ else }}{{ path .Path .Location }}{{ end }}'
 
     [blocks.segments.properties]
