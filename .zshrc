@@ -28,6 +28,16 @@ setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt SHARE_HISTORY             # Share history between all sessions.
+export FZF_CTRL_R_OPTS="
+  --with-nth 2.. --no-info
+  --wrap --bind 'ctrl-/:toggle-wrap' --wrap-sign '  ↳ '"
+export FZF_DEFAULT_OPTS="
+  --color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#262626
+  --color=hl:#b4009e,hl+:#b4009e,info:#afaf87,marker:#b4009e
+  --color=prompt:#b4009e,spinner:#b4009e,pointer:#b4009e,header:#87afaf
+  --color=gutter:-1,border:#b4009e,query:#d9d9d9
+  --border='rounded' --preview-window='border-rounded'
+  --marker='' --pointer='' --prompt='❯ '"
 
 ###############################################################################
 # Movement
@@ -62,6 +72,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 eval "$(oh-my-posh init zsh --config ${HOME}/.ohmyposh.toml)"
 eval "$(zoxide init zsh)" && alias cd='z '
+export PATH="${PATH}:${HOME}/.nix-profile/bin"
 if [[ -f ${HOME}/.fzf.zsh ]]; then
   source ${HOME}/.fzf.zsh
 else

@@ -2,6 +2,7 @@
 # Random
 ########
 alias v=nvim
+alias cat='bat --style=plain'
 alias vs='v -c "SessionManager load_last_session"'
 alias clip='clip.exe'
 alias vf='v $(fzf)'
