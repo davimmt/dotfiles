@@ -26,9 +26,6 @@ ff() { find . -type f -wholename "*$1*" }
 fd() { find . -type d -wholename "*$1*" }
 b64() { echo -n "$1" | base64 }
 b64d() { echo -e "$1" | base64 -d }
-########
-# Random
-########
 
 #####
 # Git
@@ -41,9 +38,6 @@ alias gd='git diff'
 alias gl='git log'
 alias gr='git restore'
 alias gpull='git pull --no-ff origin "$(git rev-parse --abbrev-ref HEAD)" --no-edit'
-#####
-# Git
-#####
 
 #####
 # AWS
@@ -56,9 +50,6 @@ alias ssm='aws ssm start-session --target'
 adi() { aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" "Name=tag:Name,Values=*$1*" --query "Reservations[*].Instances[*].{id: InstanceId, name: Tags[?Key=='Name'] | [0].Value, env: Tags[?Key=='Environment'] | [0].Value, ip: PrivateIpAddress, squad: Tags[?Key=='Squad'] | [0].Value}" --output table }
 adm() { aws sts decode-authorization-message --encoded-message "$1" }
 alias al='aws sso login --sso-session '
-#####
-# AWS
-#####
 
 #########
 # Kubectl
@@ -111,9 +102,6 @@ alias kcu='aws eks update-kubeconfig --name'
 alias kcn='kubectl config set-context --current --namespace'
 alias kcc='kubectl config use-context'
 kpip() { kubectl get pod -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.status.podIP}{"\n"}{end}' "$@" | column -t }
-#########
-# Kubectl
-#########
 
 ########
 # Docker
@@ -123,9 +111,6 @@ alias dps='docker ps -a'
 alias dis='docker image ls'
 alias dcc='docker rm $(docker ps --filter status=exited -q)'
 alias dci='docker rmi $(docker images -f "dangling=true" -q)'
-########
-# Docker
-########
 
 ###########
 # Terraform
@@ -139,20 +124,17 @@ alias tfd='terraform destroy'
 alias tfo='terraform output'
 alias tfr='terraform refresh'
 alias tfs='terraform state'
-###########
-# Terraform
-###########
+alias tfw='terraform workspace'
 
 #########
 # Ansible
 #########
 alias ai='ansible-inventory'
 alias ap='ansible-playbook'
-#########
-# Ansible
-#########
 
+############
 # wsl-vpnkit
+############
 export VMEXEC_PATH=/etc/wsl-vpn-kit/wsl-vm
 export GVPROXY_PATH=/etc/wsl-vpn-kit/wsl-gvproxy.exe
 
@@ -196,6 +178,3 @@ bwci() {
   }' | base64 | bw create item > /dev/null
   rm -f .bwci.tmp
 }
-###########
-# Bitwarden
-###########
