@@ -90,4 +90,4 @@ complete -o nospace -C /usr/bin/terraform terraform
 # Aliases
 ###############################################################################
 source ${HOME}/.zprofile
-setopt no_nomatch; for file in $(ls -A ${HOME}/.z.* 2> /dev/null); do source "$file"; done; setopt nomatch;
+for f in ${HOME}/.*.rc(N); do source "$f"; done;
