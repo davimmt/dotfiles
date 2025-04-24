@@ -21,15 +21,15 @@ setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt SHARE_HISTORY             # Share history between all sessions.
-export FZF_CTRL_R_OPTS="
-  --with-nth 2.. --no-info
+export FZF_CTRL_R_OPTS="\
+  --with-nth 2.. --no-info\
   --wrap --bind 'ctrl-/:toggle-wrap' --wrap-sign '  ↳ '"
-export FZF_DEFAULT_OPTS="
-  --color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#262626
-  --color=hl:#b4009e,hl+:#b4009e,info:#afaf87,marker:#b4009e
-  --color=prompt:#b4009e,spinner:#b4009e,pointer:#b4009e,header:#87afaf
-  --color=gutter:-1,border:#b4009e,query:#d9d9d9
-  --border='rounded' --preview-window='border-rounded'
+export FZF_DEFAULT_OPTS="\
+  --color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#262626\
+  --color=hl:#b4009e,hl+:#b4009e,info:#afaf87,marker:#b4009e\
+  --color=prompt:#b4009e,spinner:#b4009e,pointer:#b4009e,header:#87afaf\
+  --color=gutter:-1,border:#b4009e,query:#d9d9d9\
+  --border='rounded' --preview-window='border-rounded'\
   --marker='' --pointer='' --prompt='❯ '"
 
 ###############################################################################
@@ -56,16 +56,19 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
-eval "$(oh-my-posh init zsh --config .ohmyposh.toml)"
+eval "$(oh-my-posh init zsh --config ${FLOX_ENV_PROJECT}/.ohmyposh.toml)"
 eval "$(zoxide init zsh)" && alias cd='z '
+source <(fzf --zsh)
 
 ###############################################################################
 # Autocomplete
 ###############################################################################
-autoload -Uz compinit && compinit && source <(kubectl completion zsh)
-complete -o nospace -C /usr/bin/terraform terraform
+autoload -Uz compinit && compinit
+kubectl version >/dev/null 2>&1 && source <(kubectl completion zsh)
+terraform --version >/dev/null 2>&1 && autoload -U +X bashcompinit && \
+  bashcompinit && complete -o nospace -C /usr/local/bin/terraform terraform
 
 ###############################################################################
 # Aliases
 ###############################################################################
-for f in "${HOME}"/.*.rc(N); do source "$f"; done;
+for f in ${FLOX_ENV_PROJECT}/.*.rc(N); do source "$f"; done;

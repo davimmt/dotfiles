@@ -1,0 +1,63 @@
+# vim: ft=sh
+
+export BW_MASTERPASSWORD_FILE=~/.local/share/bitwarden/secret
+export BW_SESSION_FILE=~/.local/state/bitwarden/session
+
+mkdir -p $(dirname $BW_MASTERPASSWORD_FILE)
+mkdir -p $(dirname $BW_SESSION_FILE)
+
+alias bws='bw sync'
+alias bwgen='bw generate -ulns --length 16'
+
+bw=${FLOX_ENV}/bin/bw
+
+bwl() {
+  email=$1
+  auth_code=$2
+  login_code=0
+  login=$($bw login $email "$(cat $BW_MASTERPASSWORD_FILE)" --method 0 --code $auth_code) \
+    || login_code="$?"
+  # if error is that youve already logged in,
+  # ignore and continue the script
+  [[ $login_code && $(echo "$login" | grep -Fq 'You are already logged in as ') -eq 0 ]] || true
+  # save session token to file
+  $bw unlock --passwordfile $BW_MASTERPASSWORD_FILE | grep -o '^$ export BW_SESSION=".*"$' \
+    | sed -r 's/.*"(.*)"/\1/' > $BW_SESSION_FILE
+  # just in case
+  chmod 0600 $BW_MASTERPASSWORD_FILE
+  chmod 0600 $BW_SESSION_FILE
+  $bw sync
+}
+
+# New wrapper authenticated call
+bw() { $bw $@ --session $(cat $BW_SESSION_FILE) }
+
+# Get item
+bwg() { bw get password $@ | clip.exe }
+
+# Update item
+bwui() {
+  iid=$(bw get item $1 | jq -r .id) \
+  && bw get item $1 | jq '.login.password="'$(bwgen)'"' | bw encode | bw edit item $iid > /dev/null
+}
+
+# Create folder
+bwcf() { echo -n '{"name":"'$1'"}' | base64 | bw create folder }
+
+# Create item
+bwci() {
+  [ $# -lt 3 ] && echo 'Please supply at least 3 of 4 args.' && exit 1
+
+  name=$1
+  login=$2
+  uris=$3
+  folder=${4:-null}
+  [ $folder != null ] && folder=$(bw get folder $folder 2> .bwci.tmp | jq .id)
+  [ -f .bwci.tmp ] && grep 'More than one result was found.' .bwci.tmp && exit 1
+
+  echo -n '{
+    "folderId":'$folder',"type":1,"name":"'$name'","notes":null,
+    "login":{"uris":'$uris',"username":"'$2'","password":"'$(bwgen)'","totp":null}
+  }' | base64 | bw create item > /dev/null
+  rm -f .bwci.tmp
+}
