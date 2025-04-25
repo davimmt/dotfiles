@@ -73,7 +73,7 @@ pre-commit.pkg-path = "pre-commit"
 ## Shell specific profiles go here:
 # bash = ...
 zsh  = '''
-  source .zshrc
+  # source ${FLOX_ENV_PROJECT}/.zshrc
 '''
 # fish = ...
 

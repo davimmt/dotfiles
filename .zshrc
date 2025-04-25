@@ -56,17 +56,19 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
-eval "$(oh-my-posh init zsh --config .ohmyposh.toml)"
+eval "$(oh-my-posh init zsh --config ${FLOX_ENV_PROJECT}/.ohmyposh.toml)"
 eval "$(zoxide init zsh)" && alias cd='z '
 source <(fzf --zsh)
 
 ###############################################################################
 # Autocomplete
 ###############################################################################
-autoload -Uz compinit && compinit && source <(kubectl completion zsh)
-complete -o nospace -C /usr/bin/terraform terraform
+autoload -Uz compinit && compinit
+kubectl version >/dev/null 2>&1 && source <(kubectl completion zsh)
+terraform --version >/dev/null 2>&1 && autoload -U +X bashcompinit && \
+  bashcompinit && complete -o nospace -C /usr/local/bin/terraform terraform
 
 ###############################################################################
 # Aliases
 ###############################################################################
-for f in .*.rc(N); do source "$f"; done;
+for f in ${FLOX_ENV_PROJECT}/.*.rc(N); do source "$f"; done;

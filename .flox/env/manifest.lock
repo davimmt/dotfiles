@@ -61,7 +61,7 @@
     },
     "hook": {},
     "profile": {
-      "zsh": "  source .zshrc\n"
+      "zsh": "  # source ${FLOX_ENV_PROJECT}/.zshrc\n"
     },
     "options": {
       "systems": [
