@@ -1,0 +1,685 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "version": 1,
+    "install": {
+      "antigen": {
+        "pkg-path": "antigen"
+      },
+      "aws": {
+        "pkg-path": "awscli2"
+      },
+      "bat": {
+        "pkg-path": "bat"
+      },
+      "bw": {
+        "flake": "github:NixOS/nixpkgs#bitwarden-cli"
+      },
+      "fzf": {
+        "pkg-path": "fzf"
+      },
+      "gcc": {
+        "pkg-path": "gcc"
+      },
+      "jq": {
+        "pkg-path": "jq"
+      },
+      "kubectl": {
+        "pkg-path": "kubectl"
+      },
+      "lua": {
+        "pkg-path": "lua"
+      },
+      "neovim": {
+        "pkg-path": "neovim",
+        "version": "^0.11.0"
+      },
+      "nodejs": {
+        "pkg-path": "nodejs"
+      },
+      "oh-my-posh": {
+        "pkg-path": "oh-my-posh"
+      },
+      "oh-my-zsh": {
+        "pkg-path": "oh-my-zsh"
+      },
+      "pre-commit": {
+        "pkg-path": "pre-commit"
+      },
+      "ripgrep": {
+        "pkg-path": "ripgrep"
+      },
+      "tenv": {
+        "pkg-path": "tenv"
+      },
+      "tflint": {
+        "pkg-path": "tflint"
+      },
+      "yq": {
+        "pkg-path": "yq"
+      },
+      "zoxide": {
+        "pkg-path": "zoxide"
+      },
+      "zsh": {
+        "pkg-path": "zsh"
+      }
+    },
+    "hook": {
+      "on-activate": "#   # -> Set variables, create files and directories\n#   # -> Perform initialization steps, e.g. create a python venv\n#   # -> Useful environment variables:\n#   #      - FLOX_ENV_PROJECT=/home/user/example\n#   #      - FLOX_ENV=/home/user/example/.flox/run\n#   #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠞⠛⠈⠉⠉⠉⠉⠉⠉⠁⠛⠳⠶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⣠⡴⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⣄⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⣠⡾⠋⠀⢀⣀⠀⢀⠀⠀⠀⢤⣤⣤⣤⣤⡄⠀⠀⠀⢀⣀⠀⡀⠀⠙⢷⣄⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⢀⡾⠋⠀⠀⠀⠉⠈⠛⠉⠀⠀⠀⢸⣿⣿⣿⣿⠇⠀⠀⠀⠋⠈⠛⠁⠀⠀⠀⠙⢷⡀⠀⠀⠀\"\n  echo \"⠀⠀⢠⡟⠁⠀⠀⠀⠘⣿⣰⡟⢹⣦⠀⠀⠀⣿⣿⣿⣿⠀⠀⠙⣧⣼⠋⣼⠛⣷⠀⠀⠀⠈⢷⡄⠀⠀\"\n  echo \"⠀⢠⡟⠀⠀⠀⠀⠀⠈⣿⣿⡇⠀⠁⠀⠀⠀⢿⣿⣿⡟⠀⠀⠀⢹⣇⠀⣿⠀⠀⠀⠀⠀⠀⠈⢿⡄⠀\"\n  echo \"⠀⣾⠁⠀⠀⠀⠀⠀⠀⣿⠘⢷⣀⣿⠀⠀⠀⢸⣿⣿⡇⠀⠀⢀⡟⢻⡆⠘⣇⣾⠀⠀⠀⠀⠀⠘⣷⠀\"\n  echo \"⢠⡆⠀⠀⠀⠀⣄⣀⣘⠛⠀⠘⠛⠁⠀⠀⠀⢸⣿⣿⡇⠀⠀⠛⠁⠈⠛⠀⠘⢁⣀⣠⠀⠀⠀⠀⢠⡀\"\n  echo \"⢸⡇⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣾⣿⣿⣷⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡇\"\n  echo \"⢸⡇⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⢿⣿⣿⡿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡇\"\n  echo \"⠘⠇⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⣘⠁\"\n  echo \"⠀⢿⡀⠀⠀⠀⠀⠀⢸⣿⡀⢻⡏⣿⠀⠀⠀⢸⣿⣿⡇⠀⠀⣿⣼⠛⢸⡟⣻⠁⠀⠀⠀⠀⠀⢠⡟⠀\"\n  echo \"⠀⠘⣧⡀⠀⠀⠀⠀⢸⣿⠻⣿⡇⣿⠀⠀⠀⣸⣿⣿⡇⠀⠀⣿⣏⠀⢨⡟⢻⠀⠀⠀⠀⠀⢀⣾⠃⠀\"\n  echo \"⠀⠀⠘⢷⡀⠀⠀⠀⢸⣿⠀⢸⡇⣿⠀⠀⠀⣿⣿⣿⣿⠀⠀⣿⢿⡄⣿⡟⢻⠀⠀⠀⠀⢀⠾⠃⠀⠀\"\n  echo \"⠀⠀⠀⠈⢷⣄⠀⠀⠘⠛⠀⠘⠓⠛⠀⠀⢰⣿⣿⣿⣿⡄⠀⠛⠈⠛⠚⠃⠘⠂⠀⠀⣠⡟⠁⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠙⠻⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡔⠟⠉⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠷⢶⣤⡄⣀⣀⣀⣀⣀⣀⢠⣤⠶⠾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n"
+    },
+    "profile": {
+      "zsh": "  source ${FLOX_ENV_PROJECT}/.zshrc\n"
+    },
+    "options": {
+      "systems": [
+        "x86_64-linux"
+      ]
+    }
+  },
+  "packages": [
+    {
+      "attr_path": "antigen",
+      "broken": false,
+      "derivation": "/nix/store/cn627i8267xvy638adwskc560b8dmrl7-antigen-2.2.3.drv",
+      "description": "Plugin manager for zsh",
+      "install_id": "antigen",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "antigen-2.2.3",
+      "pname": "antigen",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:40.844761Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2.3",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/8nh12ccdn9q04k9myc2jrv9kj2s051af-antigen-2.2.3"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "awscli2",
+      "broken": false,
+      "derivation": "/nix/store/fnr6qqhxdijp5skmq9fd2snz5g4xrysq-awscli2-2.25.5.drv",
+      "description": "Unified tool to manage your AWS services",
+      "install_id": "aws",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "awscli2-2.25.5",
+      "pname": "awscli2",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:40.916630Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.25.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/mnx29v04qfm2lh1ri5r6y39afcl1156b-awscli2-2.25.5-dist",
+        "out": "/nix/store/blxfyf81afmimcmikfips2zckj2imjyq-awscli2-2.25.5"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "bat",
+      "broken": false,
+      "derivation": "/nix/store/y2b64irmqc3qmlzjqc3r8r6imclfbiii-bat-0.25.0.drv",
+      "description": "Cat(1) clone with syntax highlighting and Git integration",
+      "install_id": "bat",
+      "license": "[ Apache-2.0, MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "bat-0.25.0",
+      "pname": "bat",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:40.953427Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.25.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/znb9lva77lsydvmy3ra1h0ilzm4fgkgc-bat-0.25.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "fzf",
+      "broken": false,
+      "derivation": "/nix/store/gpawdq1s80m0lb3m4hik1b811nrd6i41-fzf-0.61.1.drv",
+      "description": "Command-line fuzzy finder written in Go",
+      "install_id": "fzf",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "fzf-0.61.1",
+      "pname": "fzf",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:42.111387Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.61.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "man": "/nix/store/3ksj954xb1wc57905c2wmyd64v7f7mwq-fzf-0.61.1-man",
+        "out": "/nix/store/6p755vm4883j3c9fkybgkjdbn2r7axpn-fzf-0.61.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gcc",
+      "broken": false,
+      "derivation": "/nix/store/7chb1402lr3jgd7sxcbj3v01l97kvs3h-gcc-wrapper-14.2.1.20250322.drv",
+      "description": "GNU Compiler Collection, version 14.2.1.20250322 (wrapper script)",
+      "install_id": "gcc",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "gcc-wrapper-14.2.1.20250322",
+      "pname": "gcc",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:42.150983Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "14.2.1.20250322",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/rs9pvqy38dx84320sxf7ql4ppv2k4rhj-gcc-wrapper-14.2.1.20250322-info",
+        "man": "/nix/store/1icxr998a24dfw4dk30v4n8kwdl0v29y-gcc-wrapper-14.2.1.20250322-man",
+        "out": "/nix/store/f0m6caffiykyvsjim9376a3hx2yj2ghj-gcc-wrapper-14.2.1.20250322"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "jq",
+      "broken": false,
+      "derivation": "/nix/store/pv893078nkchi2flra5cfdl04fv2qzcz-jq-1.7.1.drv",
+      "description": "Lightweight and flexible command-line JSON processor",
+      "install_id": "jq",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "jq-1.7.1",
+      "pname": "jq",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:44.036735Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.7.1",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/3nawavhk39z9p0l87vdpbiarvyirzv01-jq-1.7.1-bin",
+        "dev": "/nix/store/g53bmywyp08ppwfcr8i0hilpz2v7vby7-jq-1.7.1-dev",
+        "doc": "/nix/store/hf32jpvi9pg899kz18iwnlw57w83kq78-jq-1.7.1-doc",
+        "man": "/nix/store/9ym6hfn6id819vmjgffn9lxk980q6xbm-jq-1.7.1-man",
+        "out": "/nix/store/2y5zfakdg53hqbac3rnvb72vmllpn9zf-jq-1.7.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubectl",
+      "broken": false,
+      "derivation": "/nix/store/nh6rc75j8zqgzza888xdj5354jl5jqki-kubectl-1.32.3.drv",
+      "description": "Kubernetes CLI",
+      "install_id": "kubectl",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "kubectl-1.32.3",
+      "pname": "kubectl",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:44.594150Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.32.3",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "convert": "/nix/store/30cx5firf9gfizc8jcjwikxkcqljnr8q-kubectl-1.32.3-convert",
+        "man": "/nix/store/4bhrdxhqfig66mqdyxpaiy4n9llp3vg1-kubectl-1.32.3-man",
+        "out": "/nix/store/5pjr6fmdyiny7plxdnpzjrs1agiq6iw6-kubectl-1.32.3"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "lua",
+      "broken": false,
+      "derivation": "/nix/store/xr9wxgghnl06dzk13f7lqh5xs2ziwq5w-lua-5.2.4.drv",
+      "description": "Powerful, fast, lightweight, embeddable scripting language",
+      "install_id": "lua",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "lua-5.2.4",
+      "pname": "lua",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:50.466609Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.2.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/2i57c5pi1dlavbzm8l01csz6k2wkhf0w-lua-5.2.4-doc",
+        "out": "/nix/store/008sgip9wjp5ynsyi6l370g4ajm49828-lua-5.2.4"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "neovim",
+      "broken": false,
+      "derivation": "/nix/store/dv6q1kpygbqibifibawii5jag8my91n2-neovim-0.11.0.drv",
+      "description": "Vim text editor fork focused on extensibility and agility",
+      "install_id": "neovim",
+      "license": "[ Apache-2.0, Vim ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "neovim-0.11.0",
+      "pname": "neovim",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:52.863216Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/sbhwx55vm7m7f5n1418bnlbf0hvh6ban-neovim-0.11.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs",
+      "broken": false,
+      "derivation": "/nix/store/lvmx1yi282jmc8y01zz05vac8h554h34-nodejs-22.14.0.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "nodejs-22.14.0",
+      "pname": "nodejs",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:53.292029Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "22.14.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/pyhz87g4xnb88rh372p7xxls49hivh57-nodejs-22.14.0-dev",
+        "libv8": "/nix/store/ac2187x84ggp1vpxnw4y81xy3caqz77s-nodejs-22.14.0-libv8",
+        "out": "/nix/store/5z0wi8qwah6y9cv3na0fgjzbk9ihh1pz-nodejs-22.14.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "oh-my-posh",
+      "broken": false,
+      "derivation": "/nix/store/fqncii5z6nv30qa9min16665rwh93ri7-oh-my-posh-24.11.4.drv",
+      "description": "Prompt theme engine for any shell",
+      "install_id": "oh-my-posh",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "oh-my-posh-24.11.4",
+      "pname": "oh-my-posh",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:54.713792Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "24.11.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/yk51bkc00fqn6abyx860m9m9mz96xscp-oh-my-posh-24.11.4"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "oh-my-zsh",
+      "broken": false,
+      "derivation": "/nix/store/4d4f6qhl8n9czpmbvaf24q69s9dsxd02-oh-my-zsh-2025-04-13.drv",
+      "description": "Framework for managing your zsh configuration",
+      "install_id": "oh-my-zsh",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "oh-my-zsh-2025-04-13",
+      "pname": "oh-my-zsh",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:54.714714Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2025-04-13",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/x2kcwng0c1idgl4wwjcvdsaw2a7fbdb2-oh-my-zsh-2025-04-13"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "pre-commit",
+      "broken": false,
+      "derivation": "/nix/store/m22kmn4qxb8fahf0fw251z5lbmymlncb-pre-commit-4.0.1.drv",
+      "description": "Framework for managing and maintaining multi-language pre-commit hooks",
+      "install_id": "pre-commit",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "pre-commit-4.0.1",
+      "pname": "pre-commit",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:28:04.772411Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.0.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/sx4q80qdhiy49p0dwynv9fhb55hsngjx-pre-commit-4.0.1-dist",
+        "out": "/nix/store/9bkf0qr469x6g7whxmi83qyrwbyrhd67-pre-commit-4.0.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ripgrep",
+      "broken": false,
+      "derivation": "/nix/store/52c3li7cn3lbhmnb4w2yiyjmf65l5zaw-ripgrep-14.1.1.drv",
+      "description": "Utility that combines the usability of The Silver Searcher with the raw speed of grep",
+      "install_id": "ripgrep",
+      "license": "[ Unlicense, MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "ripgrep-14.1.1",
+      "pname": "ripgrep",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:28:35.878423Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "14.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/12q5d8802sxmf7zv6fqf984r8khffj40-ripgrep-14.1.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "tenv",
+      "broken": false,
+      "derivation": "/nix/store/5fz3hscwzka8cnpv6r3d1fwnc0l2rl2l-tenv-4.4.0.drv",
+      "description": "OpenTofu, Terraform, Terragrunt and Atmos version manager written in Go",
+      "install_id": "tenv",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "tenv-4.4.0",
+      "pname": "tenv",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:28:55.069789Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.4.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/kfh4b7mcyw682xcdsw4nqsd7p1vichdl-tenv-4.4.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "tflint",
+      "broken": false,
+      "derivation": "/nix/store/agzdm17y5hzdk76hsvahdkxsja12qiyr-tflint-0.56.0.drv",
+      "description": "Terraform linter focused on possible errors, best practices, and so on",
+      "install_id": "tflint",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "tflint-0.56.0",
+      "pname": "tflint",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:29:05.879310Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.56.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/yb68j23qwprvxxb5n6shhmn8s64jrqn0-tflint-0.56.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "yq",
+      "broken": false,
+      "derivation": "/nix/store/6ggk4ja7z8bxspvy2abs8nxn27gn64l1-python3.12-yq-3.4.3.drv",
+      "description": "Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents",
+      "install_id": "yq",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "python3.12-yq-3.4.3",
+      "pname": "yq",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:29:25.560351Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.4.3",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/x8ya3sa5w6msbkpg6lqadc6k7365p7gf-python3.12-yq-3.4.3-dist",
+        "out": "/nix/store/g12jy6zpig5b2p5a1jflnvdxj9iv1sv5-python3.12-yq-3.4.3"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "zoxide",
+      "broken": false,
+      "derivation": "/nix/store/xhgva967dcz3zrcjrxyv3q3aaaa766pr-zoxide-0.9.7.drv",
+      "description": "Fast cd command that learns your habits",
+      "install_id": "zoxide",
+      "license": "[ MIT ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "zoxide-0.9.7",
+      "pname": "zoxide",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:29:26.305290Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.9.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/gk7ngz9hpgd0dy56q365hfr6ygvcrzq6-zoxide-0.9.7"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "zsh",
+      "broken": false,
+      "derivation": "/nix/store/xc84i3y27sw9zxpn63pc9q2hgs6lp45y-zsh-5.9.drv",
+      "description": "Z shell",
+      "install_id": "zsh",
+      "license": "MIT-like",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "zsh-5.9",
+      "pname": "zsh",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:29:26.360863Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.9",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "doc": "/nix/store/c72si3m7nvmysxdphcbqd0qdp20cj3yi-zsh-5.9-doc",
+        "info": "/nix/store/xlhdppyyn9cz9x2vpdi32kfc4h8cfwk8-zsh-5.9-info",
+        "man": "/nix/store/wgz53xl0k802ln3ff0dg5vyqn871gmiw-zsh-5.9-man",
+        "out": "/nix/store/k6n88x9z7cqd21j0rrjq44bm0ralf3yp-zsh-5.9"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "install_id": "bw",
+      "locked-url": "github:NixOS/nixpkgs/5df704d6e91d34be7f96df62a4dee6c2f5fcf105?narHash=sha256-YDB/r5goErfB2gy8kO%2Bef4bId/YAVA8OLglZ1i83XqQ%3D",
+      "flake-description": "A collection of packages for the Nix package manager",
+      "locked-flake-attr-path": "legacyPackages.x86_64-linux.bitwarden-cli",
+      "derivation": "/nix/store/qvvh81789258221jh359vf4s4l1rsic0-bitwarden-cli-2025.3.0.drv",
+      "outputs": {
+        "out": "/nix/store/j459dwhj9lp5yvc0c4ybrwc53a163x94-bitwarden-cli-2025.3.0"
+      },
+      "output-names": [
+        "out"
+      ],
+      "outputs-to-install": [
+        "out"
+      ],
+      "requested-outputs-to-install": [],
+      "package-system": "x86_64-linux",
+      "system": "x86_64-linux",
+      "name": "bitwarden-cli-2025.3.0",
+      "pname": "bitwarden-cli",
+      "version": "2025.3.0",
+      "description": "Secure and free password manager for all of your devices",
+      "licenses": [
+        "GPL-3.0-only"
+      ],
+      "broken": false,
+      "unfree": false,
+      "priority": 5
+    }
+  ]
+}

@@ -1,9 +1,16 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version = 2
-final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
-disable_cursor_positioning = true
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '❯❯ '
+  foreground = 'lightMagenta'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '<lightMagenta>{{ now | date "15:04:05" }}</><yellow>{{ if .Segments.Executiontime }} ({{ .Segments.Executiontime.FormattedMs }}){{ end }}</> ❯ '
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}lightMagenta{{end}}']
 
 [[blocks]]
   type = 'prompt'
@@ -11,71 +18,82 @@ disable_cursor_positioning = true
   newline = true
 
   [[blocks.segments]]
+    template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ print $s.RepoName (trimPrefix $s.Dir .PWD) }}{{ else }}{{ .Path }}{{ end }}'
+    foreground = 'blue'
+    background = 'transparent'
     type = 'path'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'blue'
-    template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ print $s.RepoName (trimPrefix $s.Dir .PWD) }}{{ else }}{{ .Path }}{{ end }}'
-    # template = '{{ $s := .Segments.Git }}{{ if $s.Dir }}{{ path (print $s.RepoName (trimPrefix $s.Dir .PWD)) .Location }}{{ else }}{{ path .Path .Location }}{{ end }}'
 
     [blocks.segments.properties]
-      style = 'agnoster_short'
-      max_depth = 5
+      cache_duration = 'none'
       hide_root_location = true
+      max_depth = 5
+      style = 'agnoster_short'
 
   [[blocks.segments]]
+    template = ' {{ replaceP ".*/(.*)" .Cluster "$1" }} ⎈ {{if .Namespace}}{{.Namespace}}{{else}}default{{end}}'
+    foreground = 'lightBlue'
     type = 'kubectl'
     style = 'plain'
-    foreground = 'lightBlue'
     foreground_templates = ['{{if contains "prd" .Cluster}}red{{end}}']
-    template = ' {{ replaceP ".*/(.*)" .Cluster "$1" }} ⎈ {{if .Namespace}}{{.Namespace}}{{else}}default{{end}}'
-
-  [[blocks.segments]]
-    type = 'aws'
-    style = 'plain'
-    foreground = 'cyan'
-    template = ' {{.Profile}}{{if .Region}} ☁  {{.Region}}{{end}}'
 
     [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = ' {{.Profile}}{{if .Region}} ☁  {{.Region}}{{end}}'
+    foreground = 'cyan'
+    type = 'aws'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
       display_default = false
 
   [[blocks.segments]]
+    template = ' {{ .HEAD }}{{if .Ahead }} ⇡{{ .Ahead }}{{ end }}{{if .Behind }} ⇣{{ .Behind }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}{{ if .Working.Changed }} <yellow>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <green>{{ .Staging.String }}</>{{ end }}'
+    foreground = 'magenta'
     type = 'git'
     style = 'plain'
-    foreground = 'magenta'
-    template = ' {{ .HEAD }}{{if .Ahead }} ⇡{{ .Ahead }}{{ end }}{{if .Behind }} ⇣{{ .Behind }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}{{ if .Working.Changed }} <yellow>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <green>{{ .Staging.String }}</>{{ end }}'
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       fetch_status = true
-      # branch_icon = ' '
 
 [[blocks]]
   type = 'prompt'
   alignment = 'right'
 
   [[blocks.segments]]
+    template = '{{ if ne .Code 0 }}<red>  {{ .Code }}</>{{ end }} '
+    foreground = 'yellow'
+    background = 'transparent'
     type = 'status'
     style = 'plain'
-    foreground = 'yellow'
-    background = 'transparent'
-    template = '{{ if ne .Code 0 }}<red>  {{ .Code }}</>{{ end }} '
-
-  [[blocks.segments]]
-    type = 'executiontime'
-    style = 'plain'
-    foreground = 'yellow'
-    background = 'transparent'
-    template = '{{ .FormattedMs }} '
 
     [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '{{ .FormattedMs }} '
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
       threshold = 3000
 
   [[blocks.segments]]
-    type = 'time'
-    style = 'plain'
+    template = '{{ .CurrentDate | date .Format }}{{ if .Env.NVIM_LOG_FILE }}    {{ end }}'
     foreground = 'cyan'
     background = 'transparent'
-    template = '{{ .CurrentDate | date .Format }}{{ if .Env.NVIM_LOG_FILE }}    {{ end }}'
+    type = 'time'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
 [[blocks]]
   type = 'prompt'
@@ -83,24 +101,11 @@ disable_cursor_positioning = true
   newline = true
 
   [[blocks.segments]]
+    template = '❯'
+    background = 'transparent'
     type = 'text'
     style = 'plain'
-    foreground_templates = [
-      "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}lightMagenta{{end}}",
-    ]
-    background = 'transparent'
-    template = '❯'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}lightMagenta{{end}}']
 
-[transient_prompt]
-  foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}lightMagenta{{end}}",
-  ]
-  background = 'transparent'
-  template = '<lightMagenta>{{ now | date "15:04:05" }}</><yellow>{{ if .Segments.Executiontime }} ({{ .Segments.Executiontime.FormattedMs }}){{ end }}</> ❯ '
-
-[secondary_prompt]
-  foreground = 'lightMagenta'
-  background = 'transparent'
-  template = '❯❯ '
+    [blocks.segments.properties]
+      cache_duration = 'none'
