@@ -6,34 +6,28 @@ Also, I recommend using [this font](https://github.com/ryanoasis/nerd-fonts/rele
 
 ---
 
+Prerequisites:
+```bash
+sudo curl git xz-utils unzip vim xclip
+```
+
 First, clone this repository and its submodules:
 ```bash
 git clone --recurse-submodules --depth 1 -b main https://github.com/davimmt/dotfiles ${HOME}/.dotfiles
 ```
 
-Second, [install Flox](https://nix.dev/manual/nix/2.22/installation/installing-binary), if not already:
+Second, [install Flox](https://nix.dev/manual/nix/2.22/installation/installing-binary):
 ```bash
 FLOX_VERSION=1.4.0
 curl -LOs https://downloads.flox.dev/by-env/stable/deb/flox-${FLOX_VERSION}.x86_64-linux.deb
 sudo dpkg -i flox-${FLOX_VERSION}.x86_64-linux.deb && \
 rm flox-${FLOX_VERSION}.x86_64-linux.deb
-cat >> ~/.bashrc <<EOF
-( wsl.exe -d $WSL_DISTRO_NAME -u root service nix-daemon status 2>&1 >/dev/null ) || wsl.exe -d $WSL_DISTRO_NAME -u root service nix-daemon start
+cat >> ~/.bashrc <<'EOF'
+( wsl.exe -d $WSL_DISTRO_NAME -u root service nix-daemon status 2>&1 >/dev/null ) \
+  || wsl.exe -d $WSL_DISTRO_NAME -u root service nix-daemon start
 alias fa="SHELL=zsh flox activate -d ${HOME}/.dotfiles"
 fa
 EOF
-```
-
-Finally:
-```bash
-cd ${HOME}/.dotfiles
-./run.sh
-```
-
-Optionally, install neovim config:
-```bash
-mkdir -p ~/.config
-git clone --depth 1 -b main https://github.com/davimmt/nvim ${HOME}/.config/nvim
 ```
 
 ---
@@ -41,4 +35,30 @@ git clone --depth 1 -b main https://github.com/davimmt/nvim ${HOME}/.config/nvim
 You can now access the environment by:
 ```bash
 fa
+```
+
+---
+
+
+Optionally, install neovim config:
+```bash
+mkdir -p ~/.config
+git clone --depth 1 -b main https://github.com/davimmt/nvim ${HOME}/.config/nvim
+```
+If nvim-term, althought it can source the zsh config, still opens zsh configuration message, create an empty file:
+```bash
+touch ${HOME}/.zshenv
+```
+
+If nvim-term can't source your zsh environment, symlink the .zshrc:
+```bash
+ln -s "${HOME}/.dotfiles/.zshrc" "${HOME}/.zshrc"
+```
+
+---
+
+If you are using Bitwarden:
+```bash
+echo -n "Bitwarden master password: " && read -s i && echo -nE "$i" > "$BW_MASTERPASSWORD_FILE"
+
 ```

@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# This will symlink dotfiles to your home,
+# primarily so nvim-term can source them.
+
 dotfiles=(".zshrc" ".zprofile.rc" ".ohmyposh.toml")
 
 for f in "${dotfiles[@]}"; do
