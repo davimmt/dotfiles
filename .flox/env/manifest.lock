@@ -3,6 +3,9 @@
   "manifest": {
     "version": 1,
     "install": {
+      "ansible": {
+        "pkg-path": "ansible"
+      },
       "antigen": {
         "pkg-path": "antigen"
       },
@@ -14,6 +17,9 @@
       },
       "bw": {
         "flake": "github:NixOS/nixpkgs#bitwarden-cli"
+      },
+      "checkov": {
+        "pkg-path": "checkov"
       },
       "fzf": {
         "pkg-path": "fzf"
@@ -52,6 +58,9 @@
       "tenv": {
         "pkg-path": "tenv"
       },
+      "terraform-lsp": {
+        "pkg-path": "terraform-lsp"
+      },
       "tflint": {
         "pkg-path": "tflint"
       },
@@ -78,6 +87,36 @@
     }
   },
   "packages": [
+    {
+      "attr_path": "ansible",
+      "broken": false,
+      "derivation": "/nix/store/3n8q0m9gzv5wkfwnphlz0lj3xnsiz6hl-python3.12-ansible-core-2.18.4.drv",
+      "description": "Radically simple IT automation",
+      "install_id": "ansible",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "ansible-core-2.18.4",
+      "pname": "ansible",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:40.843297Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.18.4",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/7100pcp6czw8jm4qadm47crhf8ji1psp-python3.12-ansible-core-2.18.4-dist",
+        "out": "/nix/store/bhq6ywqfppcdqxd28z9x2b3ns7wlns75-python3.12-ansible-core-2.18.4"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
     {
       "attr_path": "antigen",
       "broken": false,
@@ -161,6 +200,36 @@
       ],
       "outputs": {
         "out": "/nix/store/znb9lva77lsydvmy3ra1h0ilzm4fgkgc-bat-0.25.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "checkov",
+      "broken": false,
+      "derivation": "/nix/store/4jayd8ryq8ijqs0fh1b68hy63r7xrnc9-checkov-3.2.405.drv",
+      "description": "Static code analysis tool for infrastructure-as-code",
+      "install_id": "checkov",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "checkov-3.2.405",
+      "pname": "checkov",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:41.119255Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.2.405",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/233r6v91v3bxazknl0b9llmrdrq31yhr-checkov-3.2.405-dist",
+        "out": "/nix/store/d3ma80hv0cwmh545crwigm11v86rm52c-checkov-3.2.405"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -526,6 +595,35 @@
       ],
       "outputs": {
         "out": "/nix/store/kfh4b7mcyw682xcdsw4nqsd7p1vichdl-tenv-4.4.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "terraform-lsp",
+      "broken": false,
+      "derivation": "/nix/store/vya848wgn1fyi5hf8jv6qig0kwhywrd6-terraform-lsp-0.0.12.drv",
+      "description": "Language Server Protocol for Terraform",
+      "install_id": "terraform-lsp",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "terraform-lsp-0.0.12",
+      "pname": "terraform-lsp",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:28:55.182197Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.0.12",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ndzfhm75ws3yhyz6fx7xw9421h54sgpa-terraform-lsp-0.0.12"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

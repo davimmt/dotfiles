@@ -27,6 +27,7 @@ lua.pkg-path = "lua"
 nodejs.pkg-path = "nodejs"
 neovim.pkg-path = "neovim"
 neovim.version = "^0.11.0"
+terraform-lsp.pkg-path = "terraform-lsp" # mason supports only terraform-ls
 
 bw.flake = "github:NixOS/nixpkgs#bitwarden-cli"
 jq.pkg-path = "jq"
@@ -35,8 +36,10 @@ bat.pkg-path = "bat"
 zoxide.pkg-path = "zoxide"
 
 aws.pkg-path = "awscli2"
+ansible.pkg-path = "ansible"
 tenv.pkg-path = "tenv"
 tflint.pkg-path = "tflint"
+checkov.pkg-path = "checkov"
 kubectl.pkg-path = "kubectl"
 pre-commit.pkg-path = "pre-commit"
 

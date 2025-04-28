@@ -117,6 +117,7 @@ alias dci='docker rmi $(docker images -f "dangling=true" -q)'
 ###########
 # Terraform
 ###########
+export TENV_AUTO_INSTALL=true
 alias tf='terraform'
 alias tfi='terraform init'
 alias tfv='terraform validate'
