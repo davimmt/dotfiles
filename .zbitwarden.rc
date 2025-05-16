@@ -44,7 +44,7 @@ bwui() {
 # Create folder
 bwcf() { echo -n '{"name":"'$1'"}' | base64 | bw create folder }
 
-# Create item
+# Create item: bwci 'name' 'login@domain.com' '["https://site.com/"]' ['folder']
 bwci() {
   [ $# -lt 3 ] && echo 'Please supply at least 3 of 4 args.' && exit 1
 

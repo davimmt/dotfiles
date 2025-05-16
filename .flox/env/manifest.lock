@@ -27,6 +27,16 @@
       "gcc": {
         "pkg-path": "gcc"
       },
+      "gnumake": {
+        "pkg-path": "gnumake"
+      },
+      "go": {
+        "pkg-path": "go",
+        "version": "1.24.2"
+      },
+      "helm": {
+        "pkg-path": "helm"
+      },
       "jq": {
         "pkg-path": "jq"
       },
@@ -55,6 +65,9 @@
       "ripgrep": {
         "pkg-path": "ripgrep"
       },
+      "ssm": {
+        "pkg-path": "ssm-session-manager-plugin"
+      },
       "tenv": {
         "pkg-path": "tenv"
       },
@@ -75,7 +88,7 @@
       }
     },
     "hook": {
-      "on-activate": "#   # -> Set variables, create files and directories\n#   # -> Perform initialization steps, e.g. create a python venv\n#   # -> Useful environment variables:\n#   #      - FLOX_ENV_PROJECT=/home/user/example\n#   #      - FLOX_ENV=/home/user/example/.flox/run\n#   #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠞⠛⠈⠉⠉⠉⠉⠉⠉⠁⠛⠳⠶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⣠⡴⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⣄⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⣠⡾⠋⠀⢀⣀⠀⢀⠀⠀⠀⢤⣤⣤⣤⣤⡄⠀⠀⠀⢀⣀⠀⡀⠀⠙⢷⣄⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⢀⡾⠋⠀⠀⠀⠉⠈⠛⠉⠀⠀⠀⢸⣿⣿⣿⣿⠇⠀⠀⠀⠋⠈⠛⠁⠀⠀⠀⠙⢷⡀⠀⠀⠀\"\n  echo \"⠀⠀⢠⡟⠁⠀⠀⠀⠘⣿⣰⡟⢹⣦⠀⠀⠀⣿⣿⣿⣿⠀⠀⠙⣧⣼⠋⣼⠛⣷⠀⠀⠀⠈⢷⡄⠀⠀\"\n  echo \"⠀⢠⡟⠀⠀⠀⠀⠀⠈⣿⣿⡇⠀⠁⠀⠀⠀⢿⣿⣿⡟⠀⠀⠀⢹⣇⠀⣿⠀⠀⠀⠀⠀⠀⠈⢿⡄⠀\"\n  echo \"⠀⣾⠁⠀⠀⠀⠀⠀⠀⣿⠘⢷⣀⣿⠀⠀⠀⢸⣿⣿⡇⠀⠀⢀⡟⢻⡆⠘⣇⣾⠀⠀⠀⠀⠀⠘⣷⠀\"\n  echo \"⢠⡆⠀⠀⠀⠀⣄⣀⣘⠛⠀⠘⠛⠁⠀⠀⠀⢸⣿⣿⡇⠀⠀⠛⠁⠈⠛⠀⠘⢁⣀⣠⠀⠀⠀⠀⢠⡀\"\n  echo \"⢸⡇⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣾⣿⣿⣷⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡇\"\n  echo \"⢸⡇⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⢿⣿⣿⡿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡇\"\n  echo \"⠘⠇⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⣘⠁\"\n  echo \"⠀⢿⡀⠀⠀⠀⠀⠀⢸⣿⡀⢻⡏⣿⠀⠀⠀⢸⣿⣿⡇⠀⠀⣿⣼⠛⢸⡟⣻⠁⠀⠀⠀⠀⠀⢠⡟⠀\"\n  echo \"⠀⠘⣧⡀⠀⠀⠀⠀⢸⣿⠻⣿⡇⣿⠀⠀⠀⣸⣿⣿⡇⠀⠀⣿⣏⠀⢨⡟⢻⠀⠀⠀⠀⠀⢀⣾⠃⠀\"\n  echo \"⠀⠀⠘⢷⡀⠀⠀⠀⢸⣿⠀⢸⡇⣿⠀⠀⠀⣿⣿⣿⣿⠀⠀⣿⢿⡄⣿⡟⢻⠀⠀⠀⠀⢀⠾⠃⠀⠀\"\n  echo \"⠀⠀⠀⠈⢷⣄⠀⠀⠘⠛⠀⠘⠓⠛⠀⠀⢰⣿⣿⣿⣿⡄⠀⠛⠈⠛⠚⠃⠘⠂⠀⠀⣠⡟⠁⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠙⠻⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡔⠟⠉⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠷⢶⣤⡄⣀⣀⣀⣀⣀⣀⢠⣤⠶⠾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n"
+      "on-activate": "#   # -> Set variables, create files and directories\n#   # -> Perform initialization steps, e.g. create a python venv\n#   # -> Useful environment variables:\n#   #      - FLOX_ENV_PROJECT=/home/user/example\n#   #      - FLOX_ENV=/home/user/example/.flox/run\n#   #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠞⠛⠈⠉⠉⠉⠉⠉⠉⠁⠛⠳⠶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⣠⡴⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⣄⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⣠⡾⠋⠀⢀⣀⠀⢀⠀⠀⠀⢤⣤⣤⣤⣤⡄⠀⠀⠀⢀⣀⠀⡀⠀⠙⢷⣄⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⢀⡾⠋⠀⠀⠀⠉⠈⠛⠉⠀⠀⠀⢸⣿⣿⣿⣿⠇⠀⠀⠀⠋⠈⠛⠁⠀⠀⠀⠙⢷⡀⠀⠀⠀\"\n  echo \"⠀⠀⢠⡟⠁⠀⠀⠀⠘⣿⣰⡟⢹⣦⠀⠀⠀⣿⣿⣿⣿⠀⠀⠙⣧⣼⠋⣼⠛⣷⠀⠀⠀⠈⢷⡄⠀⠀\"\n  echo \"⠀⢠⡟⠀⠀⠀⠀⠀⠈⣿⣿⡇⠀⠁⠀⠀⠀⢿⣿⣿⡟⠀⠀⠀⢹⣇⠀⣿⠀⠀⠀⠀⠀⠀⠈⢿⡄⠀\"\n  echo \"⠀⣾⠁⠀⠀⠀⠀⠀⠀⣿⠘⢷⣀⣿⠀⠀⠀⢸⣿⣿⡇⠀⠀⢀⡟⢻⡆⠘⣇⣾⠀⠀⠀⠀⠀⠘⣷⠀\"\n  echo \"⢠⡆⠀⠀⠀⠀⣄⣀⣘⠛⠀⠘⠛⠁⠀⠀⠀⢸⣿⣿⡇⠀⠀⠛⠁⠈⠛⠀⠘⢁⣀⣠⠀⠀⠀⠀⢠⡀\"\n  echo \"⢸⡇⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣾⣿⣿⣷⣶⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡇\"\n  echo \"⢸⡇⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⢿⣿⣿⡿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡇\"\n  echo \"⠘⠇⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⣘⠁\"\n  echo \"⠀⢿⡀⠀⠀⠀⠀⠀⢸⣿⡀⢻⡏⣿⠀⠀⠀⢸⣿⣿⡇⠀⠀⣿⣼⠛⢸⡟⣻⠁⠀⠀⠀⠀⠀⢠⡟⠀\"\n  echo \"⠀⠘⣧⡀⠀⠀⠀⠀⢸⣿⠻⣿⡇⣿⠀⠀⠀⣸⣿⣿⡇⠀⠀⣿⣏⠀⢨⡟⢻⠀⠀⠀⠀⠀⢀⣾⠃⠀\"\n  echo \"⠀⠀⠘⢷⡀⠀⠀⠀⢸⣿⠀⢸⡇⣿⠀⠀⠀⣿⣿⣿⣿⠀⠀⣿⢿⡄⣿⡟⢻⠀⠀⠀⠀⢀⠾⠃⠀⠀\"\n  echo \"⠀⠀⠀⠈⢷⣄⠀⠀⠘⠛⠀⠘⠓⠛⠀⠀⢰⣿⣿⣿⣿⡄⠀⠛⠈⠛⠚⠃⠘⠂⠀⠀⣠⡟⠁⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠙⠻⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡔⠟⠉⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠷⢶⣤⡄⣀⣀⣀⣀⣀⣀⢠⣤⠶⠾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  echo \"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\"\n  export GOENV=\"$FLOX_ENV_CACHE/goenv\"\n"
     },
     "profile": {
       "zsh": "  source ${FLOX_ENV_PROJECT}/.zshrc\n"
@@ -293,6 +306,97 @@
         "info": "/nix/store/rs9pvqy38dx84320sxf7ql4ppv2k4rhj-gcc-wrapper-14.2.1.20250322-info",
         "man": "/nix/store/1icxr998a24dfw4dk30v4n8kwdl0v29y-gcc-wrapper-14.2.1.20250322-man",
         "out": "/nix/store/f0m6caffiykyvsjim9376a3hx2yj2ghj-gcc-wrapper-14.2.1.20250322"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnumake",
+      "broken": false,
+      "derivation": "/nix/store/pxccis4lr0y6rmiiy49vyprr6hw2kh7r-gnumake-4.4.1.drv",
+      "description": "Tool to control the generation of non-source files from sources",
+      "install_id": "gnumake",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "gnumake-4.4.1",
+      "pname": "gnumake",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:42.682890Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.4.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/p4gvw42cyd98kxb9vmrgirdz826jl81f-gnumake-4.4.1-debug",
+        "info": "/nix/store/lkyw273cshz8czx9r4cy5k3zdaj0jif8-gnumake-4.4.1-info",
+        "man": "/nix/store/7b2j3nzzch1is3im1hc8a690fy295718-gnumake-4.4.1-man",
+        "out": "/nix/store/w74bmnwhk21l914zgf5qs1f5c30wxqj4-gnumake-4.4.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "go",
+      "broken": false,
+      "derivation": "/nix/store/2vf3k8270h2781z477r88vswqvw8ykp0-go-1.24.2.drv",
+      "description": "Go Programming language",
+      "install_id": "go",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "go-1.24.2",
+      "pname": "go",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:42.694002Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.24.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/rv9g1p18w52vip6652svdgy138wgx7dj-go-1.24.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "helm",
+      "broken": false,
+      "derivation": "/nix/store/fmbmvcxzvpcd40lb3dg2mraimrxrlpcy-helm-0.9.0.drv",
+      "description": "Free, cross-platform, polyphonic synthesizer",
+      "install_id": "helm",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "helm-0.9.0",
+      "pname": "helm",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:43.049950Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.9.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/kdk8m4czrrygjj7i4frmgjywnm9bah6z-helm-0.9.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -566,6 +670,35 @@
       ],
       "outputs": {
         "out": "/nix/store/12q5d8802sxmf7zv6fqf984r8khffj40-ripgrep-14.1.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ssm-session-manager-plugin",
+      "broken": false,
+      "derivation": "/nix/store/5q4yj2hk3znh0dywjrza0k8ml3cdjf1z-ssm-session-manager-plugin-1.2.707.0.drv",
+      "description": "Amazon SSM Session Manager Plugin",
+      "install_id": "ssm",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "ssm-session-manager-plugin-1.2.707.0",
+      "pname": "ssm-session-manager-plugin",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:28:53.233812Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.2.707.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/jxyjirbi15a6yf9l4xa7zw3q8fkznzmc-ssm-session-manager-plugin-1.2.707.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
