@@ -16,7 +16,7 @@ First, clone this repository and its submodules:
 git clone --recurse-submodules --depth 1 -b main https://github.com/davimmt/dotfiles ${HOME}/.dotfiles
 ```
 
-Second, [install Flox](https://nix.dev/manual/nix/2.22/installation/installing-binary):
+Second, [install Flox](https://flox.dev/docs/install-flox/):
 ```bash
 FLOX_VERSION=1.4.0
 curl -LOs https://downloads.flox.dev/by-env/stable/deb/flox-${FLOX_VERSION}.x86_64-linux.deb
