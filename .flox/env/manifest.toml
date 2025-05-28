@@ -27,27 +27,36 @@ lua.pkg-path = "lua"
 nodejs.pkg-path = "nodejs"
 neovim.pkg-path = "neovim"
 neovim.version = "^0.11.0"
-terraform-lsp.pkg-path = "terraform-lsp" # mason supports only terraform-ls
 
 go.pkg-path = "go"
 go.version = "1.24.2"
 
-bw.flake = "github:NixOS/nixpkgs#bitwarden-cli"
+bw.pkg-group = "bw"
+bw.pkg-path = "bitwarden-cli"
 jq.pkg-path = "jq"
 yq.pkg-path = "yq"
 bat.pkg-path = "bat"
 zoxide.pkg-path = "zoxide"
 gnumake.pkg-path = "gnumake"
+pre-commit.pkg-path = "pre-commit"
 
 aws.pkg-path = "awscli2"
 ssm.pkg-path = "ssm-session-manager-plugin"
-ansible.pkg-path = "ansible"
+
+az.pkg-path = "azure-cli"
+
 tenv.pkg-path = "tenv"
 tflint.pkg-path = "tflint"
-checkov.pkg-path = "checkov"
+terraform-lsp.pkg-path = "terraform-lsp" # mason supports only terraform-ls
+
 kubectl.pkg-path = "kubectl"
-helm.pkg-path = "helm"
-pre-commit.pkg-path = "pre-commit"
+helm.pkg-path = "kubernetes-helm"
+
+checkov.pkg-path = "checkov"
+checkov.pkg-group = "checkov"
+
+ansible.pkg-group = "ansible"
+ansible.pkg-path = "ansible"
 
 ## Environment Variables ---------------------------------------------
 ##  ... available for use in the activated environment
@@ -132,10 +141,10 @@ zsh  = '''
 [options]
 # Systems that environment is compatible with
 systems = [
-#  "aarch64-darwin",
+  "aarch64-darwin",
+  "x86_64-linux",
 #  "aarch64-linux",
 #  "x86_64-darwin",
-  "x86_64-linux",
 ]
 # Uncomment to disable CUDA detection.
 # cuda-detection = false

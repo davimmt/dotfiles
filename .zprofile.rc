@@ -6,7 +6,6 @@
 alias v=nvim
 alias cat='bat --style=plain'
 alias vs='v -c "SessionManager load_last_session"'
-alias clip='clip.exe'
 alias vf='v $(fzf)'
 alias cf='cat $(fzf)'
 alias bf='bat $(fzf)'
@@ -28,6 +27,7 @@ ff() { find . -type f -wholename "*$1*" }
 fd() { find . -type d -wholename "*$1*" }
 b64() { echo -n "$1" | base64 }
 b64d() { echo -e "$1" | base64 -d }
+[[ "$(uname -o)" == Darwin ]] && alias clip="pbcopy" || alias clip="clip.exe"
 
 #####
 # Git

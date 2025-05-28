@@ -33,7 +33,7 @@ bwl() {
 bw() { $bw $@ --session $(cat $BW_SESSION_FILE) }
 
 # Get item
-bwg() { bw get password $@ | clip.exe }
+bwg() { bw get password $@ | clip }
 
 # Update item
 bwui() {
