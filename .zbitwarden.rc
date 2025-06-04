@@ -33,7 +33,7 @@ bwl() {
 bw() { $bw $@ --session $(cat $BW_SESSION_FILE) }
 
 # Get item
-bwg() { bw get password $@ | clip }
+[[ "$(uname -o)" == Darwin ]] && bwg() { bw get password $@ |  pbcopy } || bwg() { bw get password $@ | clip.exe }
 
 # Update item
 bwui() {

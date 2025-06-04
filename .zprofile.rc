@@ -11,6 +11,7 @@ alias cf='cat $(fzf)'
 alias bf='bat $(fzf)'
 alias rf='rm -rf'
 alias curlg='curl -sSL -o /dev/null -D -'
+alias ss-mac='lsof -nP -iTCP -sTCP:LISTEN'
 curlt() {
     curl -w @- -o /dev/null -s "$@" <<'EOF'
     time_namelookup:  %{time_namelookup}\n
@@ -27,7 +28,6 @@ ff() { find . -type f -wholename "*$1*" }
 fd() { find . -type d -wholename "*$1*" }
 b64() { echo -n "$1" | base64 }
 b64d() { echo -e "$1" | base64 -d }
-[[ "$(uname -o)" == Darwin ]] && alias clip="pbcopy" || alias clip="clip.exe"
 
 #####
 # Git
