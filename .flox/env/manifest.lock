@@ -30,6 +30,9 @@
       "fzf": {
         "pkg-path": "fzf"
       },
+      "gawk": {
+        "pkg-path": "gawk"
+      },
       "gcc": {
         "pkg-path": "gcc"
       },
@@ -42,6 +45,13 @@
       },
       "helm": {
         "pkg-path": "kubernetes-helm"
+      },
+      "iproute2": {
+        "pkg-path": "iproute2",
+        "pkg-group": "iproute2",
+        "systems": [
+          "x86_64-linux"
+        ]
       },
       "jq": {
         "pkg-path": "jq"
@@ -73,6 +83,10 @@
       },
       "ssm": {
         "pkg-path": "ssm-session-manager-plugin"
+      },
+      "telnet": {
+        "pkg-path": "telnet",
+        "pkg-group": "telnet"
       },
       "tenv": {
         "pkg-path": "tenv"
@@ -283,6 +297,100 @@
       },
       "system": "x86_64-linux",
       "group": "checkov",
+      "priority": 5
+    },
+    {
+      "attr_path": "iproute2",
+      "broken": false,
+      "derivation": "/nix/store/ds2r3m3frjxw3m9b1gr7jp5y788ign0l-iproute2-6.14.0.drv",
+      "description": "Collection of utilities for controlling TCP/IP networking and traffic control in Linux",
+      "install_id": "iproute2",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=910796cabe436259a29a72e8d3f5e180fc6dfacc",
+      "name": "iproute2-6.14.0",
+      "pname": "iproute2",
+      "rev": "910796cabe436259a29a72e8d3f5e180fc6dfacc",
+      "rev_count": 808478,
+      "rev_date": "2025-05-31T12:05:15Z",
+      "scrape_date": "2025-06-02T05:26:13.776848Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.14.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/8zxmfyw795pjsbb3g26y6qcqkn55lj2r-iproute2-6.14.0-dev",
+        "out": "/nix/store/bxznmkg59a4s2p559fmbizc2qcgjr3ny-iproute2-6.14.0"
+      },
+      "system": "x86_64-linux",
+      "group": "iproute2",
+      "priority": 5
+    },
+    {
+      "attr_path": "telnet",
+      "broken": false,
+      "derivation": "/nix/store/p0b9cy4yxdwkyc2rr5xbkgnn88572vqj-inetutils-2.2.drv",
+      "description": "Collection of common network programs",
+      "install_id": "telnet",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c07b471b52be8fbc49a7dc194e9b37a6e19ee04d",
+      "name": "inetutils-2.2",
+      "pname": "telnet",
+      "rev": "c07b471b52be8fbc49a7dc194e9b37a6e19ee04d",
+      "rev_count": 348581,
+      "rev_date": "2022-01-25T03:21:06Z",
+      "scrape_date": "2024-08-15T20:52:42Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "apparmor": "/nix/store/sqqs3gjzhns9v562lnbg4ic26j219cmh-inetutils-2.2-apparmor",
+        "out": "/nix/store/i0wd4f526iq7lhzrqjlpamxz01r4csf2-inetutils-2.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "telnet",
+      "priority": 5
+    },
+    {
+      "attr_path": "telnet",
+      "broken": false,
+      "derivation": "/nix/store/2gxv4xvajq7mnklw6mqgd7393gvbzbwr-inetutils-2.2.drv",
+      "description": "Collection of common network programs",
+      "install_id": "telnet",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c07b471b52be8fbc49a7dc194e9b37a6e19ee04d",
+      "name": "inetutils-2.2",
+      "pname": "telnet",
+      "rev": "c07b471b52be8fbc49a7dc194e9b37a6e19ee04d",
+      "rev_count": 348581,
+      "rev_date": "2022-01-25T03:21:06Z",
+      "scrape_date": "2024-08-15T20:52:42Z",
+      "stabilities": [
+        "stable",
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "apparmor": "/nix/store/xq0m26j5n278hcl1yfrh2y11wc8xkm0x-inetutils-2.2-apparmor",
+        "out": "/nix/store/cppqmhxshdinmcadll854bc4n3gixzrp-inetutils-2.2"
+      },
+      "system": "x86_64-linux",
+      "group": "telnet",
       "priority": 5
     },
     {
@@ -578,6 +686,70 @@
       "outputs": {
         "man": "/nix/store/3ksj954xb1wc57905c2wmyd64v7f7mwq-fzf-0.61.1-man",
         "out": "/nix/store/6p755vm4883j3c9fkybgkjdbn2r7axpn-fzf-0.61.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gawk",
+      "broken": false,
+      "derivation": "/nix/store/0swii45nakd7jgq5q6nsn14c6vivxk32-gawk-5.3.1.drv",
+      "description": "GNU implementation of the Awk programming language",
+      "install_id": "gawk",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "gawk-5.3.1",
+      "pname": "gawk",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T04:22:39.137832Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/9c17rg59qkvg8qrgsv8c2l3fpvrqlg8r-gawk-5.3.1-info",
+        "man": "/nix/store/r6my8drvarl15wcbpxr0zl36sj9c92di-gawk-5.3.1-man",
+        "out": "/nix/store/w7m7ys9nqgwqf0h2rwcw50vhgyysqhv0-gawk-5.3.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gawk",
+      "broken": false,
+      "derivation": "/nix/store/3q19lx413z1lcsimbjyby00lx6rd7bfs-gawk-5.3.1.drv",
+      "description": "GNU implementation of the Awk programming language",
+      "install_id": "gawk",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "gawk-5.3.1",
+      "pname": "gawk",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:42.142169Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3.1",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/4n2af8zgwp8ldkrxjarhii8zqznbqyb4-gawk-5.3.1-info",
+        "man": "/nix/store/iv3c03ygjfh4f7x0d61b7x8m71zlqghl-gawk-5.3.1-man",
+        "out": "/nix/store/qi25cvn9j1xyvl9p7lp8nw9wqk5k648r-gawk-5.3.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

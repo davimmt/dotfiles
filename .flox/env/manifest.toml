@@ -33,12 +33,20 @@ go.version = "1.24.2"
 
 bw.pkg-group = "bw"
 bw.pkg-path = "bitwarden-cli"
+
+iproute2.pkg-group = "iproute2"
+iproute2.pkg-path = "iproute2"
+iproute2.systems = ["x86_64-linux"]
+telnet.pkg-group = "telnet"
+telnet.pkg-path = "telnet"
+
 jq.pkg-path = "jq"
 yq.pkg-path = "yq"
 bat.pkg-path = "bat"
 zoxide.pkg-path = "zoxide"
 gnumake.pkg-path = "gnumake"
 pre-commit.pkg-path = "pre-commit"
+gawk.pkg-path = "gawk"
 
 aws.pkg-path = "awscli2"
 ssm.pkg-path = "ssm-session-manager-plugin"
