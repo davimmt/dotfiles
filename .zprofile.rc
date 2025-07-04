@@ -12,6 +12,7 @@ alias bf='bat $(fzf)'
 alias rf='rm -rf'
 alias curlg='curl -sSL -o /dev/null -D -'
 alias ss-mac='lsof -nP -iTCP -sTCP:LISTEN'
+alias dud='du -h -d 1 | sort -h'
 curlt() {
     curl -w @- -o /dev/null -s "$@" <<'EOF'
     time_namelookup:  %{time_namelookup}\n
@@ -49,6 +50,17 @@ alias aus='export AWS_REGION=us-east-1 AWS_DEFAULT_REGION=us-east-1'
 alias ssoenv='eval "$(aws configure export-credentials --profile $AWS_PROFILE --format env)"'
 alias aid='aws sts get-caller-identity'
 alias ssm='aws ssm start-session --target'
+ssmt() {
+  if [ "$#" -eq 3 ]; then
+    aws ssm start-session --target "$1" \
+      --document-name AWS-StartPortForwardingSession \
+      --parameters '{"portNumber":["'$2'"],"localPortNumber":["'$3'"]}'
+  elif [ "$#" -eq 4 ]; then
+    aws ssm start-session --target "$1" \
+      --document-name AWS-StartPortForwardingSessionToRemoteHost \
+      --parameters '{"host":["'"$2"'"], "portNumber":["'$3'"], "localPortNumber":["'$4'"]}'
+  fi
+}
 adi() { aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" "Name=tag:Name,Values=*$1*" --query "Reservations[*].Instances[*].{id: InstanceId, name: Tags[?Key=='Name'] | [0].Value, env: Tags[?Key=='Environment'] | [0].Value, ip: PrivateIpAddress, squad: Tags[?Key=='Squad'] | [0].Value}" --output table }
 adm() { aws sts decode-authorization-message --encoded-message "$1" }
 alias al='aws sso login --sso-session '
@@ -119,15 +131,25 @@ alias dci='docker rmi $(docker images -f "dangling=true" -q)'
 ###########
 export TENV_AUTO_INSTALL=true
 alias tf='terraform'
-alias tfi='terraform init'
-alias tfv='terraform validate'
-alias tfp='terraform plan'
-alias tfa='terraform apply'
-alias tfd='terraform destroy'
-alias tfo='terraform output'
-alias tfr='terraform refresh'
-alias tfs='terraform state'
-alias tfw='terraform workspace'
+alias tf='tofu'
+alias tfi='tf init'
+alias tfv='tf validate'
+alias tfp='tf plan'
+alias tfa='tf apply'
+alias tfd='tf destroy'
+alias tfo='tf output'
+alias tfr='tf refresh'
+alias tfs='tf state'
+alias tfw='tf workspace'
+alias tg='terragrunt'
+alias tgv='tg validate'
+alias tgva='tgv --all'
+alias tgp='tg plan'
+alias tgpa='tgp --all'
+alias tga='tg apply'
+alias tgaa='tga --all'
+alias tgd='tg destroy'
+alias tgda='tgd --all'
 
 #########
 # Ansible
