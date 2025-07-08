@@ -55,7 +55,6 @@ az.pkg-path = "azure-cli"
 
 tenv.pkg-path = "tenv"
 tflint.pkg-path = "tflint"
-terraform-lsp.pkg-path = "terraform-lsp" # mason supports only terraform-ls
 
 kubectl.pkg-path = "kubectl"
 helm.pkg-path = "kubernetes-helm"
