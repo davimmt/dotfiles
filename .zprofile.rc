@@ -6,6 +6,7 @@
 alias v=nvim
 alias cat='bat --style=plain'
 alias vs='v -c "SessionManager load_last_session"'
+alias vg='v -c "lua vim.defer_fn(function() require(\"telescope.builtin\").git_status() end, 10)"'
 alias vf='v $(fzf)'
 alias cf='cat $(fzf)'
 alias bf='bat $(fzf)'
