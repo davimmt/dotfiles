@@ -12,7 +12,7 @@ alias cf='cat $(fzf)'
 alias bf='bat $(fzf)'
 alias rf='rm -rf'
 alias curlg='curl -sSL -o /dev/null -D -'
-alias ss-mac='lsof -nP -iTCP -sTCP:LISTEN'
+alias lss='lsof -nP -iTCP -sTCP:LISTEN'
 alias dud='du -h -d 1 | sort -h'
 curlt() {
     curl -w @- -o /dev/null -s "$@" <<'EOF'
@@ -30,6 +30,7 @@ ff() { find . -type f -wholename "*$1*" }
 fd() { find . -type d -wholename "*$1*" }
 b64() { echo -n "$1" | base64 }
 b64d() { echo -e "$1" | base64 -d }
+killp() { kill -9 $(lsof -t -i :$1) }
 
 #####
 # Git
@@ -52,14 +53,12 @@ alias ssoenv='eval "$(aws configure export-credentials --profile $AWS_PROFILE --
 alias aid='aws sts get-caller-identity'
 alias ssm='aws ssm start-session --target'
 ssmt() {
-  if [ "$#" -eq 3 ]; then
-    aws ssm start-session --target "$1" \
-      --document-name AWS-StartPortForwardingSession \
-      --parameters '{"portNumber":["'$2'"],"localPortNumber":["'$3'"]}'
-  elif [ "$#" -eq 4 ]; then
-    aws ssm start-session --target "$1" \
-      --document-name AWS-StartPortForwardingSessionToRemoteHost \
-      --parameters '{"host":["'"$2"'"], "portNumber":["'$3'"], "localPortNumber":["'$4'"]}'
+  local cmd="aws ssm start-session --target $1"
+  (( ${@[-1]} < 1024 )) && cmd="sudo -v && sudo -E $cmd"
+  if (( $# == 3 )); then
+    eval "$cmd --document-name AWS-StartPortForwardingSession --parameters '{\"portNumber\":[\"$2\"],\"localPortNumber\":[\"$3\"]}' &"
+  elif (( $# == 4 )); then
+    eval "$cmd --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters '{\"host\":[\"$2\"],\"portNumber\":[\"$3\"],\"localPortNumber\":[\"$4\"]}' &"
   fi
 }
 adi() { aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" "Name=tag:Name,Values=*$1*" --query "Reservations[*].Instances[*].{id: InstanceId, name: Tags[?Key=='Name'] | [0].Value, env: Tags[?Key=='Environment'] | [0].Value, ip: PrivateIpAddress, squad: Tags[?Key=='Squad'] | [0].Value}" --output table }
