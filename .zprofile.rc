@@ -32,6 +32,18 @@ b64() { echo -n "$1" | base64 }
 b64d() { echo -e "$1" | base64 -d }
 killp() { kill -9 $(lsof -t -i :$1) }
 
+if [[ "$(uname -o)" == GNU/Linux ]]; then
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    clipboard='wl-copy'
+  else
+    clipboard='xclip -selection clipboard'
+  fi
+elif [[ "$(uname -o)" == Darwin ]]; then
+  clipboard='pbcopy'
+fi
+
+alias clipboard=$clipboard
+
 #####
 # Git
 #####

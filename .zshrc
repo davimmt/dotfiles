@@ -58,6 +58,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 eval "$(oh-my-posh init zsh --config ${FLOX_ENV_PROJECT}/.ohmyposh.toml)"
 eval "$(zoxide init zsh)" && alias cd='z '
+eval "$(direnv hook zsh)"
 source <(fzf --zsh)
 
 ###############################################################################

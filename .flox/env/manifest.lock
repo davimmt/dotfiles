@@ -27,6 +27,9 @@
         "pkg-path": "checkov",
         "pkg-group": "checkov"
       },
+      "direnv": {
+        "pkg-path": "direnv"
+      },
       "fzf": {
         "pkg-path": "fzf"
       },
@@ -91,11 +94,14 @@
       "tenv": {
         "pkg-path": "tenv"
       },
-      "terraform-lsp": {
-        "pkg-path": "terraform-lsp"
-      },
       "tflint": {
         "pkg-path": "tflint"
+      },
+      "wlc": {
+        "pkg-path": "wl-clipboard",
+        "systems": [
+          "x86_64-linux"
+        ]
       },
       "yq": {
         "pkg-path": "yq"
@@ -302,28 +308,30 @@
     {
       "attr_path": "iproute2",
       "broken": false,
-      "derivation": "/nix/store/ds2r3m3frjxw3m9b1gr7jp5y788ign0l-iproute2-6.14.0.drv",
+      "derivation": "/nix/store/7wi8zr9x1b7j5wi051n1b4pnwvi2smlb-iproute2-6.11.0.drv",
       "description": "Collection of utilities for controlling TCP/IP networking and traffic control in Linux",
       "install_id": "iproute2",
       "license": "GPL-2.0-only",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=910796cabe436259a29a72e8d3f5e180fc6dfacc",
-      "name": "iproute2-6.14.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+      "name": "iproute2-6.11.0",
       "pname": "iproute2",
-      "rev": "910796cabe436259a29a72e8d3f5e180fc6dfacc",
-      "rev_count": 808478,
-      "rev_date": "2025-05-31T12:05:15Z",
-      "scrape_date": "2025-06-02T05:26:13.776848Z",
+      "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+      "rev_count": 724962,
+      "rev_date": "2024-12-19T23:01:11Z",
+      "scrape_date": "2024-12-23T03:54:12Z",
       "stabilities": [
+        "stable",
+        "staging",
         "unstable"
       ],
       "unfree": false,
-      "version": "6.14.0",
+      "version": "6.11.0",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "dev": "/nix/store/8zxmfyw795pjsbb3g26y6qcqkn55lj2r-iproute2-6.14.0-dev",
-        "out": "/nix/store/bxznmkg59a4s2p559fmbizc2qcgjr3ny-iproute2-6.14.0"
+        "dev": "/nix/store/r0x95gir5j5a522yay4ww7mhjqvml6ns-iproute2-6.11.0-dev",
+        "out": "/nix/store/30yhi8slm1993fabx0052whmsv86x3zm-iproute2-6.11.0"
       },
       "system": "x86_64-linux",
       "group": "iproute2",
@@ -624,6 +632,64 @@
       ],
       "outputs": {
         "out": "/nix/store/znb9lva77lsydvmy3ra1h0ilzm4fgkgc-bat-0.25.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "direnv",
+      "broken": false,
+      "derivation": "/nix/store/2ck5y45v2xn0jcpygc6bv0mlkn18b4kp-direnv-2.36.0.drv",
+      "description": "Shell extension that manages your environment",
+      "install_id": "direnv",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "direnv-2.36.0",
+      "pname": "direnv",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T04:22:38.819774Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.36.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/b9zr3pczrxwm5403lx4qnbh0194nby4k-direnv-2.36.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "direnv",
+      "broken": false,
+      "derivation": "/nix/store/7aymyyg0wi44q5pi31f3hz0j3rj96bc4-direnv-2.36.0.drv",
+      "description": "Shell extension that manages your environment",
+      "install_id": "direnv",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "direnv-2.36.0",
+      "pname": "direnv",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:27:41.557923Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.36.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/1841irvzkx2yq8bgfvlsc4zj4msyhz8d-direnv-2.36.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -1663,64 +1729,6 @@
       "priority": 5
     },
     {
-      "attr_path": "terraform-lsp",
-      "broken": false,
-      "derivation": "/nix/store/qpx7035isqg5hp35ph2xvp192xymj1i3-terraform-lsp-0.0.12.drv",
-      "description": "Language Server Protocol for Terraform",
-      "install_id": "terraform-lsp",
-      "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
-      "name": "terraform-lsp-0.0.12",
-      "pname": "terraform-lsp",
-      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
-      "rev_count": 785698,
-      "rev_date": "2025-04-17T23:31:41Z",
-      "scrape_date": "2025-04-19T04:23:20.619257Z",
-      "stabilities": [
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "0.0.12",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "out": "/nix/store/r4yyvvvrl7z07wbicfbmd1pk2x34r1az-terraform-lsp-0.0.12"
-      },
-      "system": "aarch64-darwin",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "terraform-lsp",
-      "broken": false,
-      "derivation": "/nix/store/vya848wgn1fyi5hf8jv6qig0kwhywrd6-terraform-lsp-0.0.12.drv",
-      "description": "Language Server Protocol for Terraform",
-      "install_id": "terraform-lsp",
-      "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
-      "name": "terraform-lsp-0.0.12",
-      "pname": "terraform-lsp",
-      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
-      "rev_count": 785698,
-      "rev_date": "2025-04-17T23:31:41Z",
-      "scrape_date": "2025-04-19T05:28:55.182197Z",
-      "stabilities": [
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "0.0.12",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "out": "/nix/store/ndzfhm75ws3yhyz6fx7xw9421h54sgpa-terraform-lsp-0.0.12"
-      },
-      "system": "x86_64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
       "attr_path": "tflint",
       "broken": false,
       "derivation": "/nix/store/m1mq7am18j05kg5189khadg9ikxm6g3j-tflint-0.56.0.drv",
@@ -1773,6 +1781,35 @@
       ],
       "outputs": {
         "out": "/nix/store/yb68j23qwprvxxb5n6shhmn8s64jrqn0-tflint-0.56.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "wl-clipboard",
+      "broken": false,
+      "derivation": "/nix/store/x90n0kzmvpz4sg819a99svbb69b4jpsp-wl-clipboard-2.2.1.drv",
+      "description": "Command-line copy/paste utilities for Wayland",
+      "install_id": "wlc",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "name": "wl-clipboard-2.2.1",
+      "pname": "wl-clipboard",
+      "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+      "rev_count": 785698,
+      "rev_date": "2025-04-17T23:31:41Z",
+      "scrape_date": "2025-04-19T05:29:22.968851Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/1gqr69rwa56xncd93viph4p83db8q7jp-wl-clipboard-2.2.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

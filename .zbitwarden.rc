@@ -32,8 +32,14 @@ bwl() {
 # New wrapper authenticated call
 bw() { $bw $@ --session $(cat $BW_SESSION_FILE) }
 
+# List items
+bwls() {
+  local jq_filter='[.[] | {id: .id, name: .name}]'
+  [ $# -eq 0 ] && bw list items | jq "$jq_filter" || bw list items --search "$@" | jq "$jq_filter"
+}
+
 # Get item
-[[ "$(uname -o)" == Darwin ]] && bwg() { bw get password $@ |  pbcopy } || bwg() { bw get password $@ | clip.exe }
+bwg() { bw get password $@ | $clipboard }
 
 # Update item
 bwui() {

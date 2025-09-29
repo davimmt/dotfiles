@@ -40,8 +40,12 @@ iproute2.systems = ["x86_64-linux"]
 telnet.pkg-group = "telnet"
 telnet.pkg-path = "telnet"
 
+direnv.pkg-path = "direnv"
 jq.pkg-path = "jq"
 yq.pkg-path = "yq"
+clipboard.pkg-path = "wl-clipboard"
+# clipboard.pkg-path = "xclip"
+clipboard.systems = ["x86_64-linux"]
 bat.pkg-path = "bat"
 zoxide.pkg-path = "zoxide"
 gnumake.pkg-path = "gnumake"
