@@ -63,7 +63,7 @@ alias asa='export AWS_REGION=sa-east-1 AWS_DEFAULT_REGION=sa-east-1'
 alias aus='export AWS_REGION=us-east-1 AWS_DEFAULT_REGION=us-east-1'
 alias ssoenv='eval "$(aws configure export-credentials --profile $AWS_PROFILE --format env)"'
 alias aid='aws sts get-caller-identity'
-alias ssm='aws ssm start-session --target'
+# alias ssm='aws ssm start-session --target'
 ssmt() {
   local cmd="aws ssm start-session --target $1"
   (( ${@[-1]} < 1024 )) && cmd="sudo -v && sudo -E $cmd"
@@ -128,6 +128,26 @@ alias kcu='aws eks update-kubeconfig --name'
 alias kcn='kubectl config set-context --current --namespace'
 alias kcc='kubectl config use-context'
 kpip() { kubectl get pod -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.status.podIP}{"\n"}{end}' "$@" | column -t }
+kgnt () {
+  kubectl get nodes -o json | jq -r '
+    ["NAME","CPU","MEM","PODS_CAPACITY","ZONE","INSTANCE","CAPACITY_TYPE","VERSION","STATUS","AGE"],
+      (
+        .items[] |
+        [
+          .metadata.name,
+          .status.capacity.cpu,
+          ((.status.capacity.memory | sub("Ki$"; "") | tonumber) / 1048576 | round | tostring + "Gi"),
+          .status.capacity.pods,
+          .metadata.labels["topology.kubernetes.io/zone"],
+          .metadata.labels["node.kubernetes.io/instance-type"] // .metadata.labels["eks.amazonaws.com/compute-type"],
+          .metadata.labels["karpenter.sh/capacity-type"] // .metadata.labels["eks.amazonaws.com/capacityType"] // .metadata.labels["eks.amazonaws.com/compute-type"],
+          .status.nodeInfo.kubeletVersion,
+          ((.status.conditions | map(select(.status == "True") | .type) // "NotReady") + (if .spec.unschedulable == true then ["SchedulingDisabled"] else [] end) | join(",")),
+          (if .metadata.creationTimestamp then ((now | floor) - (.metadata.creationTimestamp | fromdateiso8601) ) / 60 | floor | tostring + "m" else "-" end)
+        ]
+      )
+  | @tsv' | column -t
+}
 
 ########
 # Docker

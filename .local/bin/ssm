@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# USAGE: ./ssm-connect.sh <instance-id-or-tag-name>
+# DEPENDENCIES:
+#   - bash (>=GNU bash 5.0.17), awscli2, jq (>= jq-1.6), fzf (>= 0.30.0), awk (GNU 5.3.1)
+
+INSTANCE="$1"
+
+start_session() {
+    aws ssm start-session --target "$INSTANCE" && exit 0 || true
+}
+
+# If INSTANCE is an instance ID, try to start a session directly
+if [[ "$INSTANCE" == i-* ]]; then
+    start_session
+
+    # If does not work, try to find matching instances by instance ID
+    matching_instances=$(aws ssm describe-instance-information \
+        --filters Key=InstanceIds,Values="$INSTANCE*" \
+        --query "InstanceInformationList[].InstanceId" --output json
+    )
+# If INSTANCE is a tag name, try to find the matching instances
+else
+    matching_instances=$(aws ec2 describe-instances --output json \
+        --filters "Name=tag:Name,Values=*$INSTANCE*" "Name=instance-state-name,Values=running" \
+        --query "Reservations[].Instances[].{name: Tags[?Key=='Name'].Value | [0], id: InstanceId}"
+    )
+fi
+
+echo "$matching_instances"
+
+if [[ $(jq -e 'length' <<< "$matching_instances") -eq 0 ]]; then
+    echo "ERROR: No instances found matching: $INSTANCE" >&2
+    exit 1
+elif [[ $(jq -e 'length' <<< "$matching_instances") -eq 1 ]]; then
+    INSTANCE=$(jq -r '.[0].id' <<< "$matching_instances")
+elif [[ $(jq -e 'length' <<< "$matching_instances") -gt 1 ]]; then
+    name=$(jq -r '.[] | "\(.name)\t\(.id)"' <<< "$matching_instances" | \
+        fzf --with-nth=1 --header-first --header $'Multiple instances found - Choose one\n─────────────────────────────────────\n' --border)
+    INSTANCE=$(awk -F'\t' '{print $2}' <<< "$name")
+fi
+
+echo "$INSTANCE"
+
+start_session
