@@ -2,9 +2,18 @@
 
 set -euo pipefail
 
-# USAGE: ./ssm-connect.sh <instance-id-or-tag-name>
+# USAGE: ssm <instance-id-or-tag-name>
+#
+# EXAMPLES: ssm web-server
+#           ssm i-0123456789
+#           ssm i-0123
+#
+# DESCRIPTION: Start a session to an instance using AWS SSM.
+#              You can use the instance ID (or a substring of it) or the tag Name (or a substring of it) to start a session.
+#              If there are multiple instances matching the criteria, you will be prompted to select one.
+#
 # DEPENDENCIES:
-#   - bash (>=GNU bash 5.0.17), awscli2, jq (>= jq-1.6), fzf (>= 0.30.0), awk (GNU 5.3.1)
+#   - bash (>=GNU bash 5.0.17), awscli (>= 2.20, with ssm plugin), jq (>= jq-1.6), fzf (>= 0.30.0), awk (GNU 5.3.1)
 
 INSTANCE="$1"
 
@@ -18,7 +27,7 @@ if [[ "$INSTANCE" == i-* ]]; then
 
     # If does not work, try to find matching instances by instance ID
     matching_instances=$(aws ssm describe-instance-information \
-        --filters Key=InstanceIds,Values="$INSTANCE*" \
+        --filters Key=InstanceIds,Values="*$INSTANCE*" \
         --query "InstanceInformationList[].InstanceId" --output json
     )
 # If INSTANCE is a tag name, try to find the matching instances
