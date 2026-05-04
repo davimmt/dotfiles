@@ -75,4 +75,4 @@ terraform --version >/dev/null 2>&1 && autoload -U +X bashcompinit && \
 for f in ~/.*.rc(N); do source "$f"; done;
 for f in ${FLOX_ENV_PROJECT}/.*.rc(N); do source "$f"; done;
 mkdir -p ~/.local/bin
-for f in ${FLOX_ENV_PROJECT}/.local/bin/*(N); do ln -s "$f" ~/.local/bin/ > /dev/null 2>&1; done;
+for f in ${FLOX_ENV_PROJECT}/.local/bin/*(N); do ln -s "$f" ~/.local/bin/ > /dev/null 2>&1 || true; done;

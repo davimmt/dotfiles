@@ -39,7 +39,7 @@ bwls() {
 }
 
 # Get item
-bwg() { bw get password $@ | $clipboard }
+bwg() { bw get password $@ | clipboard }
 
 # Update item
 bwui() {

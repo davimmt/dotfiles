@@ -70,9 +70,11 @@ If nvim-term, althought it can source the zsh config, still opens zsh configurat
 touch ${HOME}/.zshenv
 ```
 
-If nvim-term can't source your zsh environment, symlink the .zshrc:
+If nvim-term can't source your zsh environment, source the .zshrc:
 ```bash
-ln -s "${HOME}/.dotfiles/.zshrc" "${HOME}/.zshrc"
+cat >> ~/.zshrc <<'EOF'
+env | egrep -q '^NVIM_' && source "${FLOX_ENV_PROJECT}/.zshrc"
+EOF
 ```
 
 ---
