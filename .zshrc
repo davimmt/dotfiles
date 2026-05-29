@@ -7,7 +7,8 @@ DISABLE_MAGIC_FUNCTIONS="true"
 ###############################################################################
 # Configuration
 ###############################################################################
-export PATH=${HOME}/.local/bin:$PATH
+export LOCAL_BIN="${HOME}/.local/bin"
+export PATH=$LOCAL_BIN:$PATH
 export PAGER=""
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -72,7 +73,7 @@ terraform --version >/dev/null 2>&1 && autoload -U +X bashcompinit && \
 ###############################################################################
 # Aliases
 ###############################################################################
-for f in ~/.*.rc(N); do source "$f"; done;
+mkdir -p $LOCAL_BIN
+for f in ${FLOX_ENV_PROJECT}/.local/bin/*(N); do ln -s "$f" $LOCAL_BIN > /dev/null 2>&1 || true; done;
 for f in ${FLOX_ENV_PROJECT}/.*.rc(N); do source "$f"; done;
-mkdir -p ~/.local/bin
-for f in ${FLOX_ENV_PROJECT}/.local/bin/*(N); do ln -s "$f" ~/.local/bin/ > /dev/null 2>&1 || true; done;
+for f in ~/.*.rc(N); do source "$f"; done;
